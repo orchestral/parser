@@ -6,6 +6,12 @@ use Orchestra\Parser\Xml\Reader;
 
 class XmlServiceProvider extends ServiceProvider
 {
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
 
     /**
      * Register the service provider.
@@ -14,8 +20,18 @@ class XmlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bindShared('orchestra.parser.reader', function ($app) {
+        $this->app->bindShared('orchestra.parser.xml', function ($app) {
             return new Reader(new Document($app));
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['orchestra.parser.xml'];
     }
 }
