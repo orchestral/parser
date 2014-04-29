@@ -1,0 +1,29 @@
+{
+    "name": "orchestra/parser",
+    "description": "Document Parser for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "crynobone",
+            "email": "crynobone@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Orchestra\\Parser\\": "src/Parser/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "require-dev": {
+        "illuminate/container": "4.2.*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.2-dev"
+        }
+    }
+    "minimum-stability": "dev"
+}
