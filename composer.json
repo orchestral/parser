@@ -18,7 +18,8 @@
         "illuminate/support": "4.2.*"
     },
     "require-dev": {
-        "illuminate/container": "4.2.*"
+        "illuminate/container": "4.2.*",
+        "mockery/mockery": "0.9.*"
     },
     "extra": {
         "branch-alias": {
