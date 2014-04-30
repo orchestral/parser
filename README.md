@@ -5,7 +5,7 @@ Orchestra Platform Parser Component
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads.png)](https://packagist.org/packages/orchestra/parser)
 [![Build Status](https://travis-ci.org/orchestral/parser.png?branch=master)](https://travis-ci.org/orchestral/parser)
 [![Coverage Status](https://coveralls.io/repos/orchestral/parser/badge.png?branch=master)](https://coveralls.io/r/orchestral/parser?branch=master)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/parser/badges/quality-score.png?s=db660b406a7b1000f0431048d26f161793cb4b29)](https://scrutinizer-ci.com/g/orchestral/parser/)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/parser/badges/quality-score.png?s=1b9253efd488e1bd1fa15fe8f8b7ebc20c342d19)](https://scrutinizer-ci.com/g/orchestral/parser/)
 
 ## Quick Installation
 
