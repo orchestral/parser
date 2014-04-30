@@ -4,6 +4,23 @@
 abstract class Reader
 {
     /**
+     * Document instance.
+     *
+     * @var Document
+     */
+    protected $document;
+
+    /**
+     * Construct a new reader.
+     *
+     * @param  Document $document
+     */
+    function __construct(Document $document)
+    {
+        $this->document = $document;
+    }
+
+    /**
      * Extract content from string.
      *
      * @param  string $content

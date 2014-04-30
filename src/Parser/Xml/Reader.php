@@ -6,21 +6,6 @@ use Orchestra\Parser\Reader as AbstractableReader;
 class Reader extends AbstractableReader
 {
     /**
-     * @var Document
-     */
-    protected $document;
-
-    /**
-     * Construct a new reader.
-     *
-     * @param  Document $document
-     */
-    function __construct(Document $document)
-    {
-        $this->document = $document;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function extract($content)
