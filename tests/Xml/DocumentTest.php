@@ -53,4 +53,30 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $stub->getContent());
     }
+
+    public function testParseMethod()
+    {
+        $stub = new Document(new Container);
+
+        $content = '<foo><bar hello="hello world">foobar</bar></foo>';
+        $schema  = [
+            'foo'    => ['uses' => 'bar'],
+            'hello'  => ['uses' => 'bar::hello'],
+            'foobar' => ['uses' => 'bar::foobar', 'default' => false],
+        ];
+
+        $expected = [
+            'foo'    => 'foobar',
+            'hello'  => 'hello world',
+            'foobar' => false,
+        ];
+
+        $stub->setContent(simplexml_load_string($content));
+
+        $data = $stub->parse($schema);
+
+        $this->assertEquals($expected, $data);
+    }
+
+
 }

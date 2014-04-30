@@ -16,11 +16,11 @@ class Document extends AbstractableDocument
         if (Str::contains($use, '::') && $content instanceof SimpleXMLElement) {
             list($value, $attribute) = explode('::', $use, 2);
 
-            if (is_null($content = object_get($content, $use))) {
+            if (is_null($parent = object_get($content, $value))) {
                 return $default;
             }
 
-            $attributes = $value->attributes();
+            $attributes = $parent->attributes();
 
             return $this->castValue(array_get($attributes, $attribute, $default));
         }

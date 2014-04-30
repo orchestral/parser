@@ -36,21 +36,22 @@ abstract class Document
      *
      * @param  array    $schema
      * @param  array    $config
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public function parse(array $schema, array $config = [])
     {
-        $output = new Collection;
+        $output = [];
 
         foreach ($schema as $key => $data) {
             $hash = Str::random(60);
 
             $value = $this->resolveValue($data, $hash);
-            $filter = array_get($data, 'filter');
 
             if ($value === $hash) {
-                $value = $data['default'];
+                $value = array_get($data, 'default');
             }
+
+            $filter = array_get($data, 'filter');
 
             if (! is_null($filter)) {
                 $value = $this->filterValue($value, $filter);
