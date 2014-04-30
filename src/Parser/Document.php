@@ -150,7 +150,6 @@ abstract class Document
             $filter = 'filter' . Str::studly(substr($filter, 1));
 
             return [$this, $filter];
-            return $resolver;
         }
 
         list($class, $method) = explode('@', $filter, 2);
