@@ -28,6 +28,7 @@ To install through composer, simply put the following in your `composer.json` fi
         <email>crynobone@gmail.com</email>
     </user>
 </api>
+```
 
 ```php
 $document = new Orchestra\Parser\Xml\Document;
