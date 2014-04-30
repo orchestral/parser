@@ -58,17 +58,21 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new Document(new Container);
 
-        $content = '<foo><bar hello="hello world">foobar</bar></foo>';
+        $content = '<foo><bar hello="hello world">foobar</bar><world></world></foo>';
         $schema  = [
-            'foo'    => ['uses' => 'bar'],
-            'hello'  => ['uses' => 'bar::hello'],
-            'foobar' => ['uses' => 'bar::foobar', 'default' => false],
+            'foo'      => ['uses' => 'bar'],
+            'hello'    => ['uses' => 'bar::hello'],
+            'world'    => ['uses' => 'world', 'default' => false],
+            'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
+            'username' => ['uses' => 'user::name', 'default' => 'Guest'],
         ];
 
         $expected = [
-            'foo'    => 'foobar',
-            'hello'  => 'hello world',
-            'foobar' => false,
+            'foo'      => 'foobar',
+            'hello'    => 'hello world',
+            'world'    => false,
+            'foobar'   => false,
+            'username' => 'Guest',
         ];
 
         $stub->setContent(simplexml_load_string($content));
