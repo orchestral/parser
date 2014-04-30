@@ -54,6 +54,11 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $stub->getContent());
     }
 
+    /**
+     * Test Orchestra\Parser\Xml\Document::parse() method.
+     *
+     * @test
+     */
     public function testParseMethod()
     {
         $stub = new Document(new Container);
@@ -81,6 +86,4 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $data);
     }
-
-
 }
