@@ -14,7 +14,31 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/parser": "2.2.*"
+		"orchestra/parser": "2.2.*@dev"
 	}
 }
+```
+
+## Example
+
+```xml
+<api>
+    <user followers="5">
+        <id>1</id>
+        <email>crynobone@gmail.com</email>
+    </user>
+</api>
+
+```php
+$document = new Orchestra\Parser\Xml\Document;
+$reader = new Orchestra\Parser\Xml\Reader($document);
+
+$xml = $reader->load('path/to/above.xml');
+$user = $xml->parse([
+    'id' => ['uses' => 'user.id'],
+    'email' => ['uses' => 'user.email'],
+    'followers' => ['uses' => 'user::followers'],
+]);
+
+var_dump($user);
 ```
