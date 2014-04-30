@@ -1,8 +1,8 @@
 <?php namespace Orchestra\Parser;
 
 use Illuminate\Support\ServiceProvider;
-use Orchestra\Parser\Xml\Document;
-use Orchestra\Parser\Xml\Reader;
+use Orchestra\Parser\Xml\Document as XmlDocument;
+use Orchestra\Parser\Xml\Reader as XmlReader;
 
 class XmlServiceProvider extends ServiceProvider
 {
@@ -21,7 +21,7 @@ class XmlServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bindShared('orchestra.parser.xml', function ($app) {
-            return new Reader(new Document($app));
+            return new XmlReader(new XmlDocument($app));
         });
     }
 
