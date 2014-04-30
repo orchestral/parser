@@ -92,19 +92,7 @@ abstract class Document
      */
     protected function filterValue($value, $filter)
     {
-        $resolver = [];
-
-        if (Str::startsWith($filter, '@')) {
-            $filter = 'filter'.Str::studly(substr($filter, 1));
-
-            $resolver = [$this, $filter];
-        } else {
-            list($class, $method) = explode('@', $filter, 2);
-
-            is_null($method) && $method = 'filter';
-
-            $resolver = [$this->app->make($class), $method];
-        }
+        $resolver = $this->getFilterResolver($filter);
 
         if (method_exists($resolver[0], $resolver[1])) {
             return call_user_func($resolver, $value);
@@ -148,4 +136,26 @@ abstract class Document
      * @return mixed
      */
     abstract protected function resolveValueByUses($use, $default);
+
+    /**
+     * Get filter resolver.
+     *
+     * @param  string   $filter
+     * @return array
+     */
+    protected function getFilterResolver($filter)
+    {
+        if (Str::startsWith($filter, '@')) {
+            $filter = 'filter' . Str::studly(substr($filter, 1));
+
+            return [$this, $filter];
+            return $resolver;
+        }
+
+        list($class, $method) = explode('@', $filter, 2);
+
+        is_null($method) && $method = 'filter';
+
+        return [$this->app->make($class), $method];
+    }
 }
