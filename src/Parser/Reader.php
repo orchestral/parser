@@ -1,6 +1,5 @@
 <?php namespace Orchestra\Parser;
 
-
 abstract class Reader
 {
     /**
@@ -15,7 +14,7 @@ abstract class Reader
      *
      * @param  Document $document
      */
-    function __construct(Document $document)
+    public function __construct(Document $document)
     {
         $this->document = $document;
     }

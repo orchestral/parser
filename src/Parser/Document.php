@@ -25,7 +25,7 @@ abstract class Document
      *
      * @param Container $app
      */
-    function __construct(Container $app)
+    public function __construct(Container $app)
     {
         $this->app = $app;
     }
