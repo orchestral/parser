@@ -27,7 +27,7 @@ class Document extends AbstractableDocument
 
         $value = $this->castValue(object_get($content, $use));
 
-        if (empty($value)) {
+        if (empty($value) && ! in_array($value, ['0'])) {
             return $default;
         }
 
