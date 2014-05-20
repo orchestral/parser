@@ -44,7 +44,7 @@ abstract class Document
         foreach ($schema as $key => $data) {
             $hash = Str::random(60);
 
-            $value = $this->resolveValue($data, $hash);
+            $value = is_array($data) ? $this->resolveValue($data, $hash) : $data;
 
             if ($value === $hash) {
                 $value = array_get($data, 'default');
@@ -87,7 +87,7 @@ abstract class Document
 
     /**
      * Filter value.
-     * 
+     *
      * @param  mixed    $value
      * @param  string   $filter
      * @return mixed
@@ -106,15 +106,13 @@ abstract class Document
     /**
      * Resolve value from content.
      *
-     * @param  array|string $config
-     * @param  string       $hash
+     * @param  array    $config
+     * @param  string   $hash
      * @return mixed
      */
-    protected function resolveValue($config, $hash)
+    protected function resolveValue(array $config, $hash)
     {
-        if (! is_array($config)) {
-            return $config;
-        } elseif (! isset($config['uses'])) {
+        if (! isset($config['uses'])) {
             return $config['default'];
         }
 
