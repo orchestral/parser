@@ -86,8 +86,10 @@ abstract class Document
     }
 
     /**
-     * @param $value
-     * @param $filter
+     * Filter value.
+     * 
+     * @param  mixed    $value
+     * @param  string   $filter
      * @return mixed
      */
     protected function filterValue($value, $filter)
@@ -103,8 +105,9 @@ abstract class Document
 
     /**
      * Resolve value from content.
-     * @param  $config
-     * @param  $hash
+     *
+     * @param  array|string $config
+     * @param  string       $hash
      * @return mixed
      */
     protected function resolveValue($config, $hash)
@@ -115,17 +118,17 @@ abstract class Document
             return $config['default'];
         }
 
-        if (is_array($config['uses'])) {
-            $values = [];
-
-            foreach ($config['uses'] as $use) {
-                $values[] = $this->resolveValueByUses($use, $hash);
-            }
-
-            return $values;
+        if (! is_array($config['uses'])) {
+            return $this->resolveValueByUses($config['uses'], $hash);
         }
 
-        return $this->resolveValueByUses($config['uses'], $hash);
+        $values = [];
+
+        foreach ($config['uses'] as $use) {
+            $values[] = $this->resolveValueByUses($use, $hash);
+        }
+
+        return $values;
     }
 
     /**

@@ -40,6 +40,6 @@ class XmlServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new XmlServiceProvider(null);
 
-        $this->assertEquals(['orchestra.parser.xml'], $stub->provides());
+        $this->assertContains('orchestra.parser.xml', $stub->provides());
     }
 }
