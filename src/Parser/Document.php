@@ -115,17 +115,17 @@ abstract class Document
             return $config['default'];
         }
 
-        if (is_array($config['uses'])) {
-            $values = [];
-
-            foreach ($config['uses'] as $use) {
-                $values[] = $this->resolveValueByUses($use, $hash);
-            }
-
-            return $values;
+        if (! is_array($config['uses'])) {
+            return $this->resolveValueByUses($config['uses'], $hash);
         }
 
-        return $this->resolveValueByUses($config['uses'], $hash);
+        $values = [];
+
+        foreach ($config['uses'] as $use) {
+            $values[] = $this->resolveValueByUses($use, $hash);
+        }
+
+        return $values;
     }
 
     /**
