@@ -14,15 +14,7 @@ class Document extends AbstractableDocument
         $content = $this->content;
 
         if (Str::contains($use, '::') && $content instanceof SimpleXMLElement) {
-            list($value, $attribute) = explode('::', $use, 2);
-
-            if (is_null($parent = object_get($content, $value))) {
-                return $default;
-            }
-
-            $attributes = $parent->attributes();
-
-            return $this->castValue(array_get($attributes, $attribute, $default));
+            return $this->resolveValueByUsesAsAttribute($use, $content, $default);
         }
 
         $value = $this->castValue(object_get($content, $use));
@@ -47,5 +39,26 @@ class Document extends AbstractableDocument
         }
 
         return $value;
+    }
+
+    /**
+     * Resolve value by uses as attribute.
+     *
+     * @param  string   $use
+     * @param  mixed    $content
+     * @param  mixed    $default
+     * @return mixed
+     */
+    protected function resolveValueByUsesAsAttribute($use, $content, $default)
+    {
+        list($value, $attribute) = explode('::', $use, 2);
+
+        if (is_null($parent = object_get($content, $value))) {
+            return $default;
+        }
+
+        $attributes = $parent->attributes();
+
+        return $this->castValue(array_get($attributes, $attribute, $default));
     }
 }
