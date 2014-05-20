@@ -44,12 +44,12 @@ class Document extends AbstractableDocument
     /**
      * Resolve value by uses as attribute.
      *
-     * @param  string   $use
-     * @param  mixed    $content
-     * @param  mixed    $default
+     * @param  string               $use
+     * @param  \SimpleXMLElement    $content
+     * @param  mixed                $default
      * @return mixed
      */
-    protected function resolveValueByUsesAsAttribute($use, $content, $default)
+    protected function resolveValueByUsesAsAttribute($use, SimpleXMLElement $content, $default)
     {
         list($value, $attribute) = explode('::', $use, 2);
 
