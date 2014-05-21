@@ -88,8 +88,8 @@ class Document extends AbstractableDocument
     protected function getValueCollection(array $matches, SimpleXMLElement $content, $default = null)
     {
         $collection = data_get($content, $matches[1]);
-        $uses     = explode(',', $matches[2]);
-        $values   = [];
+        $uses       = explode(',', $matches[2]);
+        $values     = [];
 
         if (! $collection instanceof SimpleXMLElement) {
             return $default;
