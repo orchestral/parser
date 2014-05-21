@@ -53,42 +53,127 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $stub->getContent());
     }
-
+    
     /**
      * Test Orchestra\Parser\Xml\Document::parse() method.
      *
      * @test
+     * @dataProvider dataCollectionProvider
      */
-    public function testParseMethod()
+    public function testParseMethod($content, $schema, $expected)
     {
         $stub = new DocumentStub(new Container);
-
-        $content = '<foo><bar hello="hello world">foobar</bar><world></world></foo>';
-        $schema  = [
-            'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
-            'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
-            'world'    => ['uses' => 'world', 'default' => false],
-            'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
-            'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
-            'google'   => 'google.com',
-            'facebook' => ['default' => 'facebook.com'],
-        ];
-
-        $expected = [
-            'foo'      => 'FOOBAR',
-            'hello'    => ['hello world', 'foobar'],
-            'world'    => false,
-            'foobar'   => false,
-            'username' => 'guest',
-            'google'   => 'google.com',
-            'facebook' => 'facebook.com',
-        ];
 
         $stub->setContent(simplexml_load_string($content));
 
         $data = $stub->parse($schema);
 
         $this->assertEquals($expected, $data);
+    }
+
+    public function dataCollectionProvider()
+    {
+        return [
+            [
+'<foo>
+    <bar hello="hello world">foobar</bar>
+    <world></world>
+</foo>',
+                [
+                    'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
+                    'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
+                    'world'    => ['uses' => 'world', 'default' => false],
+                    'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
+                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
+                    'google'   => 'google.com',
+                    'facebook' => ['default' => 'facebook.com'],
+                ],
+                [
+                    'foo'      => 'FOOBAR',
+                    'hello'    => ['hello world', 'foobar'],
+                    'world'    => false,
+                    'foobar'   => false,
+                    'username' => 'guest',
+                    'google'   => 'google.com',
+                    'facebook' => 'facebook.com',
+                ]
+            ],
+            [
+'<api>
+    <collection>
+        <user>
+            <id>1</id>
+            <name>Mior Muhammad Zaki</name>
+        </user>
+        <user>
+            <id>2</id>
+            <name>Taylor Otwell</name>
+        </user>
+    </collection>
+</api>',
+                [
+                    'users' => ['uses' => 'collection.user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api>
+    <user>
+        <id>1</id>
+        <name>Mior Muhammad Zaki</name>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Taylor Otwell</name>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api></api>',
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
+                    'users' => null,
+                ],
+            ],
+            [
+'<api><user></user></api>',
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
+                    'users' => [],
+                ],
+            ],
+        ];
+
     }
 }
 

@@ -42,19 +42,7 @@ abstract class Document
         $output = [];
 
         foreach ($schema as $key => $data) {
-            $hash = Str::random(60);
-
-            $value = is_array($data) ? $this->resolveValue($data, $hash) : $data;
-
-            if ($value === $hash) {
-                $value = array_get($data, 'default');
-            }
-
-            $filter = array_get($data, 'filter');
-
-            if (! is_null($filter)) {
-                $value = $this->filterValue($value, $filter);
-            }
+            $value = $this->parseData($data);
 
             if (! array_get($config, 'ignore', false)) {
                 $output[$key] = $value;
@@ -157,5 +145,30 @@ abstract class Document
         is_null($method) && $method = 'filter';
 
         return [$this->app->make($class), $method];
+    }
+
+    /**
+     * Parse single data.
+     *
+     * @param  mixed    $data
+     * @return mixed
+     */
+    protected function parseData($data)
+    {
+        $hash = Str::random(60);
+
+        $value = is_array($data) ? $this->resolveValue($data, $hash) : $data;
+
+        if ($value === $hash) {
+            $value = array_get($data, 'default');
+        }
+
+        $filter = array_get($data, 'filter');
+
+        if (! is_null($filter)) {
+            $value = $this->filterValue($value, $filter);
+        }
+
+        return $value;
     }
 }
