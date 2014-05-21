@@ -103,7 +103,7 @@ class Document extends AbstractableDocument
             }
 
             foreach ($uses as $use) {
-                array_set($value, $use, $this->getValueDataByUses($use, $content));
+                array_set($value, $use, $this->getValueData($content, $use));
             }
 
             $values[] = $value;
