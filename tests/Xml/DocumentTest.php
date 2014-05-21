@@ -90,6 +90,104 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $data);
     }
+
+    /**
+     * Test Orchestra\Parser\Xml\Document::parse() method with collection.
+     *
+     * @test
+     * @dataProvider dataCollectionProvider
+     */
+    public function testParseMethodWithCollection($content, $schema, $expected)
+    {
+        $stub = new DocumentStub(new Container);
+
+        $stub->setContent(simplexml_load_string($content));
+
+        $data = $stub->parse($schema);
+
+        $this->assertEquals($expected, $data);
+    }
+
+    public function dataCollectionProvider()
+    {
+        return [
+            [
+'<api>
+    <collection>
+        <user>
+            <id>1</id>
+            <name>Mior Muhammad Zaki</name>
+        </user>
+        <user>
+            <id>2</id>
+            <name>Taylor Otwell</name>
+        </user>
+    </collection>
+</api>',
+                [
+                    'users' => ['uses' => 'collection.user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api>
+    <user>
+        <id>1</id>
+        <name>Mior Muhammad Zaki</name>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Taylor Otwell</name>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api></api>',
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
+                    'users' => null,
+                ],
+            ],
+            [
+'<api><user></user></api>',
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
+                    'users' => [],
+                ],
+            ],
+        ];
+
+    }
 }
 
 class DocumentStub extends \Orchestra\Parser\Xml\Document
