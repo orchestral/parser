@@ -53,51 +53,14 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $stub->getContent());
     }
-
+    
     /**
      * Test Orchestra\Parser\Xml\Document::parse() method.
      *
      * @test
-     */
-    public function testParseMethod()
-    {
-        $stub = new DocumentStub(new Container);
-
-        $content = '<foo><bar hello="hello world">foobar</bar><world></world></foo>';
-        $schema  = [
-            'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
-            'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
-            'world'    => ['uses' => 'world', 'default' => false],
-            'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
-            'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
-            'google'   => 'google.com',
-            'facebook' => ['default' => 'facebook.com'],
-        ];
-
-        $expected = [
-            'foo'      => 'FOOBAR',
-            'hello'    => ['hello world', 'foobar'],
-            'world'    => false,
-            'foobar'   => false,
-            'username' => 'guest',
-            'google'   => 'google.com',
-            'facebook' => 'facebook.com',
-        ];
-
-        $stub->setContent(simplexml_load_string($content));
-
-        $data = $stub->parse($schema);
-
-        $this->assertEquals($expected, $data);
-    }
-
-    /**
-     * Test Orchestra\Parser\Xml\Document::parse() method with collection.
-     *
-     * @test
      * @dataProvider dataCollectionProvider
      */
-    public function testParseMethodWithCollection($content, $schema, $expected)
+    public function testParseMethod($content, $schema, $expected)
     {
         $stub = new DocumentStub(new Container);
 
@@ -111,6 +74,30 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     public function dataCollectionProvider()
     {
         return [
+            [
+'<foo>
+    <bar hello="hello world">foobar</bar>
+    <world></world>
+</foo>',
+                [
+                    'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
+                    'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
+                    'world'    => ['uses' => 'world', 'default' => false],
+                    'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
+                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
+                    'google'   => 'google.com',
+                    'facebook' => ['default' => 'facebook.com'],
+                ],
+                [
+                    'foo'      => 'FOOBAR',
+                    'hello'    => ['hello world', 'foobar'],
+                    'world'    => false,
+                    'foobar'   => false,
+                    'username' => 'guest',
+                    'google'   => 'google.com',
+                    'facebook' => 'facebook.com',
+                ]
+            ],
             [
 '<api>
     <collection>
