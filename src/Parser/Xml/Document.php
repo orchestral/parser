@@ -14,12 +14,12 @@ class Document extends AbstractableDocument
         $content = $this->content;
 
         if (preg_match('/^(.*)\[(.*)\]$/', $use, $matches) && $content instanceof SimpleXMLElement) {
-            return $this->getValueCollection($matches, $content, $default);
+            return $this->getValueCollection($content, $matches, $default);
         } elseif (Str::contains($use, '::') && $content instanceof SimpleXMLElement) {
-            return $this->getValueAttributeByUses($use, $content, $default);
+            return $this->getValueAttribute($content, $use, $default);
         }
 
-        return $this->getValueDataByUses($use, $content, $default);
+        return $this->getValueData($content, $use, $default);
     }
 
     /**
@@ -40,12 +40,12 @@ class Document extends AbstractableDocument
     /**
      * Resolve value by uses as attribute.
      *
-     * @param  string               $use
      * @param  \SimpleXMLElement    $content
+     * @param  string               $use
      * @param  mixed                $default
      * @return mixed
      */
-    protected function getValueAttributeByUses($use, SimpleXMLElement $content, $default = null)
+    protected function getValueAttribute(SimpleXMLElement $content, $use, $default = null)
     {
         list($value, $attribute) = explode('::', $use, 2);
 
@@ -61,12 +61,12 @@ class Document extends AbstractableDocument
     /**
      * Resolve value by uses as data.
      *
-     * @param  string               $use
      * @param  \SimpleXMLElement    $content
+     * @param  string               $use
      * @param  mixed                $default
      * @return mixed
      */
-    protected function getValueDataByUses($use, SimpleXMLElement $content, $default = null)
+    protected function getValueData(SimpleXMLElement $content, $use, $default = null)
     {
         $value = $this->castValue(data_get($content, $use));
 
@@ -80,12 +80,12 @@ class Document extends AbstractableDocument
     /**
      * Resolve values by collection.
      *
-     * @param  array                $matches
      * @param  \SimpleXMLElement    $content
+     * @param  array                $matches
      * @param  mixed                $default
      * @return array
      */
-    protected function getValueCollection(array $matches, SimpleXMLElement $content, $default = null)
+    protected function getValueCollection(SimpleXMLElement $content, array $matches, $default = null)
     {
         $collection = data_get($content, $matches[1]);
         $uses       = explode(',', $matches[2]);
