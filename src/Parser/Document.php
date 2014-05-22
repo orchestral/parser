@@ -105,13 +105,13 @@ abstract class Document
         }
 
         if (! is_array($config['uses'])) {
-            return $this->resolveValueByUses($config['uses'], $hash);
+            return $this->resolveValueByUses($this->content, $config['uses'], $hash);
         }
 
         $values = [];
 
         foreach ($config['uses'] as $use) {
-            $values[] = $this->resolveValueByUses($use, $hash);
+            $values[] = $this->resolveValueByUses($this->content, $use, $hash);
         }
 
         return $values;
@@ -120,11 +120,12 @@ abstract class Document
     /**
      * Resolve value from uses filter.
      *
+     * @param  mixed    $content
      * @param  string   $use
      * @param  string   $default
      * @return mixed
      */
-    abstract protected function resolveValueByUses($use, $default);
+    abstract protected function resolveValueByUses($content, $use, $default = null);
 
     /**
      * Get filter resolver.
