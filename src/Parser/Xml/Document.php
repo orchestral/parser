@@ -9,10 +9,8 @@ class Document extends AbstractableDocument
     /**
      * {@inheritdoc}
      */
-    protected function resolveValueByUses($use, $default)
+    protected function getValue($content, $use, $default = null)
     {
-        $content = $this->content;
-
         if (preg_match('/^(.*)\[(.*)\]$/', $use, $matches) && $content instanceof SimpleXMLElement) {
             return $this->getValueCollection($content, $matches, $default);
         } elseif (Str::contains($use, '::') && $content instanceof SimpleXMLElement) {
@@ -103,7 +101,7 @@ class Document extends AbstractableDocument
             }
 
             foreach ($uses as $use) {
-                array_set($value, $use, $this->getValueData($content, $use));
+                array_set($value, $use, $this->getValue($content, $use));
             }
 
             $values[] = $value;
