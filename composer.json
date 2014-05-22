@@ -1,11 +1,12 @@
 {
     "name": "orchestra/parser",
-    "description": "Document Parser for Laravel",
+    "description": "XML Document Parser for Laravel and PHP",
     "license": "MIT",
     "authors": [
         {
-            "name": "crynobone",
-            "email": "crynobone@gmail.com"
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com",
+            "homepage": "https://github.com/crynobone"
         }
     ],
     "autoload": {
