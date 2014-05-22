@@ -1,31 +1,31 @@
 {
-    "name": "orchestra/parser",
-    "description": "XML Document Parser for Laravel and PHP",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Mior Muhammad Zaki",
-            "email": "crynobone@gmail.com",
-            "homepage": "https://github.com/crynobone"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Orchestra\\Parser\\": "src/Parser/"
-        }
-    },
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "4.3.*"
-    },
-    "require-dev": {
-        "illuminate/container": "4.3.*",
-        "mockery/mockery": "0.9.*"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.3-dev"
-        }
-    },
-    "minimum-stability": "dev"
+	"name": "orchestra/parser",
+	"description": "XML Document Parser for Laravel and PHP",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Mior Muhammad Zaki",
+			"email": "crynobone@gmail.com",
+			"homepage": "https://github.com/crynobone"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Orchestra\\Parser\\": "src/Parser/"
+		}
+	},
+	"require": {
+		"php": ">=5.4.0",
+		"illuminate/container": "4.3.*",
+		"illuminate/support": "4.3.*"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.9.*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.3-dev"
+		}
+	},
+	"minimum-stability": "dev"
 }
