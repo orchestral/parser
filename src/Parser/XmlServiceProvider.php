@@ -32,6 +32,6 @@ class XmlServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['orchestra.parser.xml'];
+        return array('orchestra.parser.xml');
     }
 }

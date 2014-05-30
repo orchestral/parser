@@ -68,7 +68,7 @@ class Document extends AbstractableDocument
     {
         $value = $this->castValue(data_get($content, $use));
 
-        if (empty($value) && !in_array($value, ['0'])) {
+        if (empty($value) && !in_array($value, array('0'))) {
             return $default;
         }
 
@@ -94,7 +94,7 @@ class Document extends AbstractableDocument
         }
 
         foreach ($collection as $content) {
-            $value = [];
+            $value = array();
 
             if (empty($content)) {
                 continue;

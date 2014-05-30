@@ -33,7 +33,7 @@ class Reader extends AbstractableReader
      */
     protected function resolveXmlObject($xml)
     {
-        if (!$xml) {
+        if (! $xml) {
             throw new InvalidContentException("Unable to parse XML from string.");
         }
 

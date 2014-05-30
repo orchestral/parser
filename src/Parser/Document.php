@@ -37,9 +37,9 @@ abstract class Document
      * @param  array    $config
      * @return array
      */
-    public function parse(array $schema, array $config = [])
+    public function parse(array $schema, array $config = array())
     {
-        $output = [];
+        $output = array();
 
         foreach ($schema as $key => $data) {
             $value = $this->parseData($data);
@@ -108,7 +108,7 @@ abstract class Document
             return $this->getValue($this->content, $config['uses'], $hash);
         }
 
-        $values = [];
+        $values = array();
 
         foreach ($config['uses'] as $use) {
             $values[] = $this->getValue($this->content, $use, $hash);
@@ -145,7 +145,7 @@ abstract class Document
 
         is_null($method) && $method = 'filter';
 
-        return [$this->app->make($class), $method];
+        return array($this->app->make($class), $method);
     }
 
     /**
