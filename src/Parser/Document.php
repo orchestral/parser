@@ -143,7 +143,9 @@ abstract class Document
             return array($this, $method);
         }
 
-        Str::contains($filter, '@') && list($class, $method) = explode('@', $filter, 2);
+        if (Str::contains($filter, '@')) {
+            list($class, $method) = explode('@', $filter, 2);
+        }
 
         return array($this->app->make($class), $method);
     }
@@ -165,6 +167,7 @@ abstract class Document
         }
 
         $filter = array_get($data, 'filter');
+            var_dump($filter);
 
         if (! is_null($filter)) {
             $value = $this->filterValue($value, $filter);
