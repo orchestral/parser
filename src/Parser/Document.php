@@ -135,15 +135,15 @@ abstract class Document
      */
     protected function getFilterResolver($filter)
     {
-        if (Str::startsWith($filter, '@')) {
-            $filter = 'filter' . Str::studly(substr($filter, 1));
+        $class  = $filter;
+        $method = 'filter';
 
-            return array($this, $filter);
+        if (Str::startsWith($filter, '@')) {
+            $method = 'filter' . Str::studly(substr($filter, 1));
+            return array($this, $method);
         }
 
-        list($class, $method) = explode('@', $filter, 2);
-
-        is_null($method) && $method = 'filter';
+        Str::contains($filter, '@') && list($class, $method) = explode('@', $filter, 2);
 
         return array($this->app->make($class), $method);
     }
