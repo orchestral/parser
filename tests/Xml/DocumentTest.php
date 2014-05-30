@@ -73,32 +73,32 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     public function dataCollectionProvider()
     {
-        return [
-            [
+        return array(
+            array(
 '<foo>
     <bar hello="hello world">foobar</bar>
     <world></world>
 </foo>',
-                [
-                    'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
-                    'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
-                    'world'    => ['uses' => 'world', 'default' => false],
-                    'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
-                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
+                array(
+                    'foo'      => array('uses' => 'bar', 'filter' => '@strToUpper'),
+                    'hello'    => array('uses' => array('bar::hello', 'bar'), 'filter' => '@notFilterable'),
+                    'world'    => array('uses' => 'world', 'default' => false),
+                    'foobar'   => array('uses' => 'bar::foobar', 'default' => false),
+                    'username' => array('uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'),
                     'google'   => 'google.com',
-                    'facebook' => ['default' => 'facebook.com'],
-                ],
-                [
+                    'facebook' => array('default' => 'facebook.com'),
+                ),
+                array(
                     'foo'      => 'FOOBAR',
-                    'hello'    => ['hello world', 'foobar'],
+                    'hello'    => array('hello world', 'foobar'),
                     'world'    => false,
                     'foobar'   => false,
                     'username' => 'guest',
                     'google'   => 'google.com',
                     'facebook' => 'facebook.com',
-                ]
-            ],
-            [
+                ),
+            ),
+            array(
 '<api>
     <collection>
         <user>
@@ -111,23 +111,23 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         </user>
     </collection>
 </api>',
-                [
-                    'users' => ['uses' => 'collection.user[id,name]'],
-                ],
-                [
-                    'users' => [
-                        [
+                array(
+                    'users' => array('uses' => 'collection.user[id,name]'),
+                ),
+                array(
+                    'users' => array(
+                        array(
                             'id'   => '1',
                             'name' => 'Mior Muhammad Zaki',
-                        ],
-                        [
+                        ),
+                        array(
                             'id'   => '2',
                             'name' => 'Taylor Otwell',
-                        ],
-                    ],
-                ],
-            ],
-            [
+                        ),
+                    ),
+                ),
+            ),
+            array(
 '<api>
     <user>
         <id>1</id>
@@ -138,41 +138,41 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         <name>Taylor Otwell</name>
     </user>
 </api>',
-                [
-                    'users' => ['uses' => 'user[id,name]'],
-                ],
-                [
-                    'users' => [
-                        [
+                array(
+                    'users' => array('uses' => 'user[id,name]'),
+                ),
+                array(
+                    'users' => array(
+                        array(
                             'id'   => '1',
                             'name' => 'Mior Muhammad Zaki',
-                        ],
-                        [
+                        ),
+                        array(
                             'id'   => '2',
                             'name' => 'Taylor Otwell',
-                        ],
-                    ],
-                ],
-            ],
-            [
+                        ),
+                    ),
+                ),
+            ),
+            array(
 '<api></api>',
-                [
-                    'users' => ['uses' => 'user[id,name]', 'default' => null],
-                ],
-                [
+                array(
+                    'users' => array('uses' => 'user[id,name]', 'default' => null),
+                ),
+                array(
                     'users' => null,
-                ],
-            ],
-            [
+                ),
+            ),
+            array(
 '<api><user></user></api>',
-                [
-                    'users' => ['uses' => 'user[id,name]', 'default' => null],
-                ],
-                [
-                    'users' => [],
-                ],
-            ],
-        ];
+                array(
+                    'users' => array('uses' => 'user[id,name]', 'default' => null),
+                ),
+                array(
+                    'users' => array(),
+                ),
+            ),
+        );
 
     }
 }

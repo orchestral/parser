@@ -68,7 +68,7 @@ class Document extends AbstractableDocument
     {
         $value = $this->castValue(data_get($content, $use));
 
-        if (empty($value) && !in_array($value, ['0'])) {
+        if (empty($value) && !in_array($value, array('0'))) {
             return $default;
         }
 
@@ -87,14 +87,14 @@ class Document extends AbstractableDocument
     {
         $collection = data_get($content, $matches[1]);
         $uses       = explode(',', $matches[2]);
-        $values     = [];
+        $values     = array();
 
         if (! $collection instanceof SimpleXMLElement) {
             return $default;
         }
 
         foreach ($collection as $content) {
-            $value = [];
+            $value = array();
 
             if (empty($content)) {
                 continue;
