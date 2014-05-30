@@ -138,7 +138,7 @@ abstract class Document
         if (Str::startsWith($filter, '@')) {
             $filter = 'filter' . Str::studly(substr($filter, 1));
 
-            return [$this, $filter];
+            return array($this, $filter);
         }
 
         list($class, $method) = explode('@', $filter, 2);
