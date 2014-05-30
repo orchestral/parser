@@ -166,8 +166,7 @@ abstract class Document
             $value = array_get($data, 'default');
         }
 
-        $filter = array_get($data, 'filter');
-            var_dump($filter);
+        $filter = is_array($data) ? array_get($data, 'filter') : null;
 
         if (! is_null($filter)) {
             $value = $this->filterValue($value, $filter);
