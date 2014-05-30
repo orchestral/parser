@@ -87,7 +87,7 @@ class Document extends AbstractableDocument
     {
         $collection = data_get($content, $matches[1]);
         $uses       = explode(',', $matches[2]);
-        $values     = [];
+        $values     = array();
 
         if (! $collection instanceof SimpleXMLElement) {
             return $default;
