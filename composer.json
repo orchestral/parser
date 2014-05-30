@@ -15,9 +15,9 @@
 		}
 	},
 	"require": {
-		"php": ">=5.4.0",
-		"illuminate/container": "4.2.*",
-		"illuminate/support": "4.2.*"
+		"php": ">=5.3.3",
+		"illuminate/container": "4.1.*",
+		"illuminate/support": "4.1.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*"
