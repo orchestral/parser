@@ -158,15 +158,18 @@ abstract class Document
      */
     protected function parseData($data)
     {
-        $hash = Str::random(60);
+        $hash   = Str::random(60);
+        $value  = $data;
+        $filter = null;
 
-        $value = is_array($data) ? $this->resolveValue($data, $hash) : $data;
+        if (is_array($data)) {
+            $value  = $this->resolveValue($data, $hash);
+            $filter = array_get($data, 'filter');
+        }
 
         if ($value === $hash) {
             $value = array_get($data, 'default');
         }
-
-        $filter = is_array($data) ? array_get($data, 'filter') : null;
 
         if (! is_null($filter)) {
             $value = $this->filterValue($value, $filter);
