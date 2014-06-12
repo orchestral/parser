@@ -1,6 +1,8 @@
 Orchestra Platform Parser Component
 ==============
 
+`Orchestra\Parser` Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic. 
+
 [![Latest Stable Version](https://poser.pugx.org/orchestra/parser/v/stable.png)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads.png)](https://packagist.org/packages/orchestra/parser)
 [![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=2.2)](https://travis-ci.org/orchestral/parser)
@@ -19,7 +21,8 @@ To install through composer, simply put the following in your `composer.json` fi
 }
 ```
 
-## Example
+
+## Usage Example
 
 ```xml
 <api>
