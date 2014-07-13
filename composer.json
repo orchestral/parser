@@ -2,6 +2,7 @@
 	"name": "orchestra/parser",
 	"description": "XML Document Parser for Laravel and PHP",
 	"license": "MIT",
+	"keywords": ["laravel", "orchestral", "orchestra-platform", "xml", "parser"],
 	"authors": [
 		{
 			"name": "Mior Muhammad Zaki",
