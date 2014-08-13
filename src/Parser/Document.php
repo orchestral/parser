@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Parser;
 
 use Illuminate\Container\Container;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 abstract class Document
@@ -164,11 +165,11 @@ abstract class Document
 
         if (is_array($data)) {
             $value  = $this->resolveValue($data, $hash);
-            $filter = array_get($data, 'filter');
+            $filter = Arr::get($data, 'filter');
         }
 
         if ($value === $hash) {
-            $value = array_get($data, 'default');
+            $value = Arr::get($data, 'default');
         }
 
         if (! is_null($filter)) {
