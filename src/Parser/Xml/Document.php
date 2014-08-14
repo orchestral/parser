@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Parser\Xml;
 
 use SimpleXMLElement;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Orchestra\Parser\Document as AbstractableDocument;
 
@@ -53,7 +54,7 @@ class Document extends AbstractableDocument
 
         $attributes = $parent->attributes();
 
-        return $this->castValue(array_get($attributes, $attribute, $default));
+        return $this->castValue(Arr::get($attributes, $attribute, $default));
     }
 
     /**
@@ -68,7 +69,7 @@ class Document extends AbstractableDocument
     {
         $value = $this->castValue(data_get($content, $use));
 
-        if (empty($value) && !in_array($value, array('0'))) {
+        if (empty($value) && ! in_array($value, array('0'))) {
             return $default;
         }
 
@@ -101,7 +102,7 @@ class Document extends AbstractableDocument
             }
 
             foreach ($uses as $use) {
-                array_set($value, $use, $this->getValue($content, $use));
+                Arr::set($value, $use, $this->getValue($content, $use));
             }
 
             $values[] = $value;
