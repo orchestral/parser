@@ -54,7 +54,7 @@ class Document extends AbstractableDocument
 
         $attributes = $parent->attributes();
 
-        return $this->castValue(array_get($attributes, $attribute, $default));
+        return $this->castValue(Arr::get($attributes, $attribute, $default));
     }
 
     /**

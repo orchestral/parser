@@ -45,7 +45,7 @@ abstract class Document
         foreach ($schema as $key => $data) {
             $value = $this->parseData($data);
 
-            if (! array_get($config, 'ignore', false)) {
+            if (! Arr::get($config, 'ignore', false)) {
                 $output[$key] = $value;
             }
         }
