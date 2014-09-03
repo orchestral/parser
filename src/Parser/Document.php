@@ -23,7 +23,7 @@ abstract class Document
     /**
      * Construct a new document.
      *
-     * @param Container $app
+     * @param \Illuminate\Container\Container $app
      */
     public function __construct(Container $app)
     {
@@ -86,7 +86,7 @@ abstract class Document
         $resolver = $this->getFilterResolver($filter);
 
         if (method_exists($resolver[0], $resolver[1])) {
-            return call_user_func($resolver, $value);
+            return $this->app->call($resolver, array($value));
         }
 
         return $value;
