@@ -86,7 +86,7 @@ abstract class Document
         $resolver = $this->getFilterResolver($filter);
 
         if (method_exists($resolver[0], $resolver[1])) {
-            return $this->app->call($resolver, array($value));
+            return $this->app->call($resolver, array('value' => $value));
         }
 
         return $value;
