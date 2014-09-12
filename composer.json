@@ -17,15 +17,15 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"illuminate/container": "4.3.*",
-		"illuminate/support": "4.3.*"
+		"illuminate/container": "5.0.*",
+		"illuminate/support": "5.0.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*"
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.3-dev"
+			"dev-master": "3.0-dev"
 		}
 	},
 	"minimum-stability": "dev"
