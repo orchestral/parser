@@ -1,8 +1,8 @@
 <?php namespace Orchestra\Parser;
 
 use Illuminate\Support\ServiceProvider;
-use Orchestra\Parser\Xml\Document as XmlDocument;
 use Orchestra\Parser\Xml\Reader as XmlReader;
+use Orchestra\Parser\Xml\Document as XmlDocument;
 
 class XmlServiceProvider extends ServiceProvider
 {
