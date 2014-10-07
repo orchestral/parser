@@ -1,7 +1,7 @@
 <?php namespace Orchestra\Parser;
 
-use Illuminate\Container\Container;
 use Illuminate\Support\Str;
+use Illuminate\Container\Container;
 
 abstract class Document
 {
