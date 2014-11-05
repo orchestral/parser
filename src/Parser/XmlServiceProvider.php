@@ -20,7 +20,7 @@ class XmlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bindShared('orchestra.parser.xml', function ($app) {
+        $this->app->singleton('orchestra.parser.xml', function ($app) {
             return new XmlReader(new XmlDocument($app));
         });
     }
@@ -32,6 +32,6 @@ class XmlServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('orchestra.parser.xml');
+        return ['orchestra.parser.xml'];
     }
 }
