@@ -1,4 +1,4 @@
-Parser Component for Orchestra Platform
+XML Document Parser for Laravel and PHP
 ==============
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
