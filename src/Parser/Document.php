@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\Container;
 
 abstract class Document
 {
     /**
      * Container instance.
      *
-     * @var \Illuminate\Container\Container
+     * @var \Illuminate\Contracts\Container\Container
      */
     protected $app;
 
@@ -23,7 +23,7 @@ abstract class Document
     /**
      * Construct a new document.
      *
-     * @param \Illuminate\Container\Container $app
+     * @param \Illuminate\Contracts\Container\Container  $app
      */
     public function __construct(Container $app)
     {
@@ -34,13 +34,13 @@ abstract class Document
     /**
      * Parse document.
      *
-     * @param  array    $schema
-     * @param  array    $config
+     * @param  array  $schema
+     * @param  array  $config
      * @return array
      */
-    public function parse(array $schema, array $config = array())
+    public function parse(array $schema, array $config = [])
     {
-        $output = array();
+        $output = [];
 
         foreach ($schema as $key => $data) {
             $value = $this->parseData($data);
@@ -56,7 +56,7 @@ abstract class Document
     /**
      * Set the content.
      *
-     * @param  mixed $content
+     * @param  mixed  $content
      * @return void
      */
     public function setContent($content)
@@ -77,8 +77,8 @@ abstract class Document
     /**
      * Filter value.
      *
-     * @param  mixed    $value
-     * @param  string   $filter
+     * @param  mixed   $value
+     * @param  string  $filter
      * @return mixed
      */
     protected function filterValue($value, $filter)
@@ -86,7 +86,7 @@ abstract class Document
         $resolver = $this->getFilterResolver($filter);
 
         if (method_exists($resolver[0], $resolver[1])) {
-            return $this->app->call($resolver, array('value' => $value));
+            return $this->app->call($resolver, ['value' => $value]);
         }
 
         return $value;
@@ -95,8 +95,8 @@ abstract class Document
     /**
      * Resolve value from content.
      *
-     * @param  array    $config
-     * @param  string   $hash
+     * @param  array   $config
+     * @param  string  $hash
      * @return mixed
      */
     protected function resolveValue(array $config, $hash)
@@ -109,7 +109,7 @@ abstract class Document
             return $this->getValue($this->content, $config['uses'], $hash);
         }
 
-        $values = array();
+        $values = [];
 
         foreach ($config['uses'] as $use) {
             $values[] = $this->getValue($this->content, $use, $hash);
@@ -121,9 +121,9 @@ abstract class Document
     /**
      * Resolve value from uses filter.
      *
-     * @param  mixed    $content
-     * @param  string   $use
-     * @param  string   $default
+     * @param  mixed   $content
+     * @param  string  $use
+     * @param  string  $default
      * @return mixed
      */
     abstract protected function getValue($content, $use, $default = null);
@@ -131,7 +131,7 @@ abstract class Document
     /**
      * Get filter resolver.
      *
-     * @param  string   $filter
+     * @param  string  $filter
      * @return array
      */
     protected function getFilterResolver($filter)
@@ -141,20 +141,20 @@ abstract class Document
 
         if (Str::startsWith($filter, '@')) {
             $method = 'filter' . Str::studly(substr($filter, 1));
-            return array($this, $method);
+            return [$this, $method];
         }
 
         if (Str::contains($filter, '@')) {
             list($class, $method) = explode('@', $filter, 2);
         }
 
-        return array($this->app->make($class), $method);
+        return [$this->app->make($class), $method];
     }
 
     /**
      * Parse single data.
      *
-     * @param  mixed    $data
+     * @param  mixed  $data
      * @return mixed
      */
     protected function parseData($data)

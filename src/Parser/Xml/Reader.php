@@ -1,9 +1,9 @@
 <?php namespace Orchestra\Parser\Xml;
 
+use Orchestra\Parser\Reader as BaseReader;
 use Orchestra\Parser\InvalidContentException;
-use Orchestra\Parser\Reader as AbstractableReader;
 
-class Reader extends AbstractableReader
+class Reader extends BaseReader
 {
     /**
      * {@inheritdoc}

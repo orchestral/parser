@@ -5,14 +5,14 @@ abstract class Reader
     /**
      * Document instance.
      *
-     * @var Document
+     * @var \Orchestra\Parser\Document
      */
     protected $document;
 
     /**
      * Construct a new reader.
      *
-     * @param  Document $document
+     * @param  \Orchestra\Parser\Document  $document
      */
     public function __construct(Document $document)
     {
@@ -22,16 +22,16 @@ abstract class Reader
     /**
      * Extract content from string.
      *
-     * @param  string $content
-     * @return Document
+     * @param  string  $content
+     * @return \Orchestra\Parser\Document
      */
     abstract public function extract($content);
 
     /**
      * Load content from file.
      *
-     * @param  string   $filename
-     * @return Document
+     * @param  string  $filename
+     * @return \Orchestra\Parser\Document
      */
     abstract public function load($filename);
 }

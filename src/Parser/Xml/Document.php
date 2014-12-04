@@ -3,9 +3,9 @@
 use SimpleXMLElement;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Orchestra\Parser\Document as AbstractableDocument;
+use Orchestra\Parser\Document as BaseDocument;
 
-class Document extends AbstractableDocument
+class Document extends BaseDocument
 {
     /**
      * {@inheritdoc}
@@ -24,7 +24,7 @@ class Document extends AbstractableDocument
     /**
      * Cast value to string only when it is an instance of SimpleXMLElement.
      *
-     * @param  mixed    $value
+     * @param  mixed  $value
      * @return mixed
      */
     protected function castValue($value)
@@ -39,9 +39,9 @@ class Document extends AbstractableDocument
     /**
      * Resolve value by uses as attribute.
      *
-     * @param  \SimpleXMLElement    $content
-     * @param  string               $use
-     * @param  mixed                $default
+     * @param  \SimpleXMLElement  $content
+     * @param  string  $use
+     * @param  mixed  $default
      * @return mixed
      */
     protected function getValueAttribute(SimpleXMLElement $content, $use, $default = null)
@@ -60,9 +60,9 @@ class Document extends AbstractableDocument
     /**
      * Resolve value by uses as data.
      *
-     * @param  \SimpleXMLElement    $content
-     * @param  string               $use
-     * @param  mixed                $default
+     * @param  \SimpleXMLElement  $content
+     * @param  string  $use
+     * @param  mixed  $default
      * @return mixed
      */
     protected function getValueData(SimpleXMLElement $content, $use, $default = null)
@@ -79,23 +79,23 @@ class Document extends AbstractableDocument
     /**
      * Resolve values by collection.
      *
-     * @param  \SimpleXMLElement    $content
-     * @param  array                $matches
-     * @param  mixed                $default
+     * @param  \SimpleXMLElement  $content
+     * @param  array  $matches
+     * @param  mixed  $default
      * @return array
      */
     protected function getValueCollection(SimpleXMLElement $content, array $matches, $default = null)
     {
         $collection = data_get($content, $matches[1]);
         $uses       = explode(',', $matches[2]);
-        $values     = array();
+        $values     = [];
 
         if (! $collection instanceof SimpleXMLElement) {
             return $default;
         }
 
         foreach ($collection as $content) {
-            $value = array();
+            $value = [];
 
             if (empty($content)) {
                 continue;
