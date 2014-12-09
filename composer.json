@@ -12,7 +12,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"Orchestra\\Parser\\": "src/Parser/"
+			"Orchestra\\Parser\\": "src/"
 		}
 	},
 	"require": {
