@@ -6,9 +6,9 @@ Parser Component is a framework agnostic package that provide a simple way to pa
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/parser.svg?style=flat)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://img.shields.io/packagist/dt/orchestra/parser.svg?style=flat)](https://packagist.org/packages/orchestra/parser)
 [![MIT License](https://img.shields.io/packagist/l/orchestra/parser.svg?style=flat)](https://packagist.org/packages/orchestra/parser)
-[![Build Status](https://img.shields.io/travis/orchestral/parser/3.0.svg?style=flat)](https://travis-ci.org/orchestral/parser)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/parser/3.0.svg?style=flat)](https://coveralls.io/r/orchestral/parser?branch=3.0)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/parser/3.0.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/parser/)
+[![Build Status](https://img.shields.io/travis/orchestral/parser/master.svg?style=flat)](https://travis-ci.org/orchestral/parser)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/parser/master.svg?style=flat)](https://coveralls.io/r/orchestral/parser?branch=master)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/parser/master.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/parser/)
 
 ## Quick Installation
 
