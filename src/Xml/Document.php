@@ -69,7 +69,7 @@ class Document extends BaseDocument
     {
         $value = $this->castValue(data_get($content, $use));
 
-        if (empty($value) && ! in_array($value, array('0'))) {
+        if (empty($value) && ! in_array($value, ['0'])) {
             return $default;
         }
 

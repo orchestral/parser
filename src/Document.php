@@ -30,7 +30,6 @@ abstract class Document
         $this->app = $app;
     }
 
-
     /**
      * Parse document.
      *
@@ -140,7 +139,7 @@ abstract class Document
         $method = 'filter';
 
         if (Str::startsWith($filter, '@')) {
-            $method = 'filter' . Str::studly(substr($filter, 1));
+            $method = 'filter'.Str::studly(substr($filter, 1));
             return [$this, $method];
         }
 
