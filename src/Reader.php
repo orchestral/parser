@@ -23,6 +23,7 @@ abstract class Reader
      * Extract content from string.
      *
      * @param  string  $content
+     *
      * @return \Orchestra\Parser\Document
      */
     abstract public function extract($content);
@@ -31,6 +32,7 @@ abstract class Reader
      * Load content from file.
      *
      * @param  string  $filename
+     *
      * @return \Orchestra\Parser\Document
      */
     abstract public function load($filename);

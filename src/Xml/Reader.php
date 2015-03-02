@@ -29,7 +29,9 @@ class Reader extends BaseReader
      * Validate given XML.
      *
      * @param  object $xml
+     *
      * @return \Orchestra\Parser\Document
+     *
      * @throws \Orchestra\Parser\InvalidContentException
      */
     protected function resolveXmlObject($xml)
