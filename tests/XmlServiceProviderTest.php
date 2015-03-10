@@ -28,7 +28,7 @@ class XmlServiceProviderTest extends \PHPUnit_Framework_TestCase
 
     public function testRegisterMethod()
     {
-        $app = new Container;
+        $app = new Container();
 
         $stub = new XmlServiceProvider($app);
         $stub->register();

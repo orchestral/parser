@@ -23,11 +23,11 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     {
         $expected = '<foo><bar>foobar</bar></foo>';
 
-        $stub = new Document(new Container);
+        $stub = new Document(new Container());
 
         $stub->setContent($expected);
 
-        $refl = new \ReflectionObject($stub);
+        $refl    = new \ReflectionObject($stub);
         $content = $refl->getProperty('content');
         $content->setAccessible(true);
 
@@ -43,9 +43,9 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     {
         $expected = '<foo><bar>foobar</bar></foo>';
 
-        $stub = new Document(new Container);
+        $stub = new Document(new Container());
 
-        $refl = new \ReflectionObject($stub);
+        $refl    = new \ReflectionObject($stub);
         $content = $refl->getProperty('content');
         $content->setAccessible(true);
 
@@ -62,7 +62,7 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseMethod($content, $schema, $expected)
     {
-        $stub = new DocumentStub(new Container);
+        $stub = new DocumentStub(new Container());
 
         $stub->setContent(simplexml_load_string($content));
 
@@ -73,32 +73,32 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
 
     public function dataCollectionProvider()
     {
-        return array(
-            array(
+        return [
+            [
 '<foo>
     <bar hello="hello world">foobar</bar>
     <world></world>
 </foo>',
-                array(
-                    'foo'      => array('uses' => 'bar', 'filter' => '@strToUpper'),
-                    'hello'    => array('uses' => array('bar::hello', 'bar'), 'filter' => '@notFilterable'),
-                    'world'    => array('uses' => 'world', 'default' => false),
-                    'foobar'   => array('uses' => 'bar::foobar', 'default' => false),
-                    'username' => array('uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'),
+                [
+                    'foo'      => ['uses' => 'bar', 'filter' => '@strToUpper'],
+                    'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
+                    'world'    => ['uses' => 'world', 'default' => false],
+                    'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
+                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
                     'google'   => 'google.com',
-                    'facebook' => array('default' => 'facebook.com'),
-                ),
-                array(
+                    'facebook' => ['default' => 'facebook.com'],
+                ],
+                [
                     'foo'      => 'FOOBAR',
-                    'hello'    => array('hello world', 'foobar'),
+                    'hello'    => ['hello world', 'foobar'],
                     'world'    => false,
                     'foobar'   => false,
                     'username' => 'guest',
                     'google'   => 'google.com',
                     'facebook' => 'facebook.com',
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
 '<api>
     <collection>
         <user>
@@ -111,23 +111,23 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         </user>
     </collection>
 </api>',
-                array(
-                    'users' => array('uses' => 'collection.user[id,name]'),
-                ),
-                array(
-                    'users' => array(
-                        array(
+                [
+                    'users' => ['uses' => 'collection.user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
                             'id'   => '1',
                             'name' => 'Mior Muhammad Zaki',
-                        ),
-                        array(
+                        ],
+                        [
                             'id'   => '2',
                             'name' => 'Taylor Otwell',
-                        ),
-                    ),
-                ),
-            ),
-            array(
+                        ],
+                    ],
+                ],
+            ],
+            [
 '<api>
     <user>
         <id>1</id>
@@ -138,42 +138,41 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         <name>Taylor Otwell</name>
     </user>
 </api>',
-                array(
-                    'users' => array('uses' => 'user[id,name]'),
-                ),
-                array(
-                    'users' => array(
-                        array(
+                [
+                    'users' => ['uses' => 'user[id,name]'],
+                ],
+                [
+                    'users' => [
+                        [
                             'id'   => '1',
                             'name' => 'Mior Muhammad Zaki',
-                        ),
-                        array(
+                        ],
+                        [
                             'id'   => '2',
                             'name' => 'Taylor Otwell',
-                        ),
-                    ),
-                ),
-            ),
-            array(
+                        ],
+                    ],
+                ],
+            ],
+            [
 '<api></api>',
-                array(
-                    'users' => array('uses' => 'user[id,name]', 'default' => null),
-                ),
-                array(
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
                     'users' => null,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
 '<api><user></user></api>',
-                array(
-                    'users' => array('uses' => 'user[id,name]', 'default' => null),
-                ),
-                array(
-                    'users' => array(),
-                ),
-            ),
-        );
-
+                [
+                    'users' => ['uses' => 'user[id,name]', 'default' => null],
+                ],
+                [
+                    'users' => [],
+                ],
+            ],
+        ];
     }
 }
 
