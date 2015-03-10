@@ -25,6 +25,7 @@ class Document extends BaseDocument
      * Cast value to string only when it is an instance of SimpleXMLElement.
      *
      * @param  mixed  $value
+     *
      * @return mixed
      */
     protected function castValue($value)
@@ -42,6 +43,7 @@ class Document extends BaseDocument
      * @param  \SimpleXMLElement  $content
      * @param  string  $use
      * @param  mixed  $default
+     *
      * @return mixed
      */
     protected function getValueAttribute(SimpleXMLElement $content, $use, $default = null)
@@ -63,13 +65,14 @@ class Document extends BaseDocument
      * @param  \SimpleXMLElement  $content
      * @param  string  $use
      * @param  mixed  $default
+     *
      * @return mixed
      */
     protected function getValueData(SimpleXMLElement $content, $use, $default = null)
     {
         $value = $this->castValue(data_get($content, $use));
 
-        if (empty($value) && ! in_array($value, array('0'))) {
+        if (empty($value) && ! in_array($value, ['0'])) {
             return $default;
         }
 
@@ -82,6 +85,7 @@ class Document extends BaseDocument
      * @param  \SimpleXMLElement  $content
      * @param  array  $matches
      * @param  mixed  $default
+     *
      * @return array
      */
     protected function getValueCollection(SimpleXMLElement $content, array $matches, $default = null)

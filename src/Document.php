@@ -30,12 +30,12 @@ abstract class Document
         $this->app = $app;
     }
 
-
     /**
      * Parse document.
      *
      * @param  array  $schema
      * @param  array  $config
+     *
      * @return array
      */
     public function parse(array $schema, array $config = [])
@@ -57,6 +57,7 @@ abstract class Document
      * Set the content.
      *
      * @param  mixed  $content
+     *
      * @return void
      */
     public function setContent($content)
@@ -79,6 +80,7 @@ abstract class Document
      *
      * @param  mixed   $value
      * @param  string  $filter
+     *
      * @return mixed
      */
     protected function filterValue($value, $filter)
@@ -97,6 +99,7 @@ abstract class Document
      *
      * @param  array   $config
      * @param  string  $hash
+     *
      * @return mixed
      */
     protected function resolveValue(array $config, $hash)
@@ -124,6 +127,7 @@ abstract class Document
      * @param  mixed   $content
      * @param  string  $use
      * @param  string  $default
+     *
      * @return mixed
      */
     abstract protected function getValue($content, $use, $default = null);
@@ -132,6 +136,7 @@ abstract class Document
      * Get filter resolver.
      *
      * @param  string  $filter
+     *
      * @return array
      */
     protected function getFilterResolver($filter)
@@ -140,7 +145,7 @@ abstract class Document
         $method = 'filter';
 
         if (Str::startsWith($filter, '@')) {
-            $method = 'filter' . Str::studly(substr($filter, 1));
+            $method = 'filter'.Str::studly(substr($filter, 1));
             return [$this, $method];
         }
 
@@ -155,6 +160,7 @@ abstract class Document
      * Parse single data.
      *
      * @param  mixed  $data
+     *
      * @return mixed
      */
     protected function parseData($data)

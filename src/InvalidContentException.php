@@ -2,5 +2,5 @@
 
 class InvalidContentException extends \InvalidArgumentException
 {
-
+    //
 }
