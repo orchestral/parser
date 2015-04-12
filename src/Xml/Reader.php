@@ -37,7 +37,7 @@ class Reader extends BaseReader
     protected function resolveXmlObject($xml)
     {
         if (! $xml) {
-            throw new InvalidContentException("Unable to parse XML from string.");
+            throw new InvalidContentException('Unable to parse XML from string.');
         }
 
         $this->document->setContent($xml);
