@@ -130,7 +130,7 @@ class Document extends BaseDocument
                     $item = $this->getSelfMatchingValue($content, $matches);
 
                     if ($name == $as) {
-                        $value = $item;
+                        $value = array_merge($value, $item);
                     } else {
                         Arr::set($value, $as, $item);
                     }
