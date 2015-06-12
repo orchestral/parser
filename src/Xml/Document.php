@@ -48,6 +48,20 @@ class Document extends BaseDocument
      */
     protected function getValueAttribute(SimpleXMLElement $content, $use, $default = null)
     {
+        return $this->castValue($this->getRawValueAttribute($content, $use, $default));
+    }
+
+    /**
+     * Resolve value by uses as attribute as raw.
+     *
+     * @param  \SimpleXMLElement  $content
+     * @param  string  $use
+     * @param  mixed  $default
+     *
+     * @return mixed
+     */
+    protected function getRawValueAttribute(SimpleXMLElement $content, $use, $default = null)
+    {
         list($value, $attribute) = explode('::', $use, 2);
 
         if (is_null($parent = object_get($content, $value))) {
@@ -56,7 +70,7 @@ class Document extends BaseDocument
 
         $attributes = $parent->attributes();
 
-        return $this->castValue(Arr::get($attributes, $attribute, $default));
+        return Arr::get($attributes, $attribute, $default);
     }
 
     /**
@@ -106,12 +120,60 @@ class Document extends BaseDocument
             }
 
             foreach ($uses as $use) {
-                Arr::set($value, $use, $this->getValue($content, $use));
+                if (Str::contains($use, '>')) {
+                    list($name, $as) = explode('>', $use, 2);
+                } else {
+                    $name = $as = $use;
+                }
+
+                if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
+                    $item = $this->getSelfMatchingValue($content, $matches);
+
+                    if ($name == $as) {
+                        $value = $item;
+                    } else {
+                        Arr::set($value, $as, $item);
+                    }
+                } else {
+                    if ($name == '@') {
+                        $name = null;
+                    }
+
+                    Arr::set($value, $as, $this->getValue($content, $name));
+                }
             }
 
             $values[] = $value;
         }
 
         return $values;
+    }
+
+    /**
+     * Get self matching value.
+     *
+     * @param  \SimpleXMLElement  $content
+     * @param  array  $matches
+     *
+     * @return array
+     */
+    protected function getSelfMatchingValue(SimpleXMLElement $content, array $matches = [])
+    {
+        $name = $matches[1];
+        $key  = $matches[2];
+        $meta = $matches[3];
+
+        $item = [];
+
+        $collection = $this->getValue($content, "{$name}[{$key},{$meta}]");
+
+        foreach ($collection as $collect) {
+            $k = $collect[$key];
+            $v = $collect[$meta];
+
+            $item[$k] = $v;
+        }
+
+        return $item;
     }
 }
