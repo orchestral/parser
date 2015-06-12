@@ -155,6 +155,95 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
             [
+'<api>
+    <user>
+        <id>1</id>
+        <name>Mior Muhammad Zaki</name>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Taylor Otwell</name>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[id,name>fullname]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'fullname' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'fullname' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api>
+    <user>
+        <property id="id">
+            <value>1</value>
+        </property>
+        <property id="name">
+            <value>Mior Muhammad Zaki</value>
+        </property>
+    </user>
+    <user>
+        <property id="id">
+            <value>2</value>
+        </property>
+        <property id="name">
+            <value>Taylor Otwell</value>
+        </property>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[property(::id=value)]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api>
+    <user>
+        <property id="id">1</property>
+        <property id="name">Mior Muhammad Zaki</property>
+    </user>
+    <user>
+        <property id="id">2</property>
+        <property id="name">Taylor Otwell</property>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[property(::id=@)]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'name' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'name' => 'Taylor Otwell',
+                        ],
+                    ],
+                ],
+            ],
+            [
 '<api></api>',
                 [
                     'users' => ['uses' => 'user[id,name]', 'default' => null],
@@ -172,6 +261,65 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
                     'users' => [],
                 ],
             ],
+            [
+'<products>
+    <product ID="123456">
+        <name>Lord of the Rings</name>
+        <description>Just a book.</description>
+        <properties>
+            <property name="id">
+                <value>2108</value>
+            </property>
+            <property name="avail">
+                <value>1</value>
+            </property>
+            <property name="cat">
+                <value>Fantasy Books</value>
+            </property>
+        </properties>
+    </product>
+    <product ID="123457">
+        <name>Winnie The Pooh</name>
+        <description>Good for children.</description>
+        <properties>
+            <property name="id">
+                <value>3763</value>
+            </property>
+            <property name="avail">
+                <value>0</value>
+            </property>
+            <property name="cat">
+                <value>Child Books</value>
+            </property>
+        </properties>
+    </product>
+</products>',
+                [
+                    'books' => ['uses' => 'product[::ID>id,name,properties.property(::name=value)>meta]', 'default' => null]
+                ],
+                [
+                    'books' => [
+                        [
+                            'id' => '123456',
+                            'name' => 'Lord of the Rings',
+                            'meta' => [
+                                'id' => '2108',
+                                'avail' => '1',
+                                'cat' => 'Fantasy Books',
+                            ],
+                        ],
+                        [
+                            'id' => '123457',
+                            'name' => 'Winnie The Pooh',
+                            'meta' => [
+                                'id' => '3763',
+                                'avail' => '0',
+                                'cat' => 'Child Books',
+                            ],
+                        ],
+                    ]
+                ]
+            ]
         ];
     }
 }
