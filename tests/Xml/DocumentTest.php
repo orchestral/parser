@@ -319,7 +319,62 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
                         ],
                     ]
                 ]
-            ]
+            ],
+            [
+'<products>
+    <product ID="123456">
+        <name>Lord of the Rings</name>
+        <description>Just a book.</description>
+        <properties>
+            <property name="id">
+                <value>2108</value>
+            </property>
+            <property name="avail">
+                <value>1</value>
+            </property>
+            <property name="cat">
+                <value>Fantasy Books</value>
+            </property>
+        </properties>
+    </product>
+    <product ID="123457">
+        <name>Winnie The Pooh</name>
+        <description>Good for children.</description>
+        <properties>
+            <property name="id">
+                <value>3763</value>
+            </property>
+            <property name="avail">
+                <value>0</value>
+            </property>
+            <property name="cat">
+                <value>Child Books</value>
+            </property>
+        </properties>
+    </product>
+</products>',
+                [
+                    'books' => ['uses' => 'product[::ID>bookID,name,properties.property(::name=value)]', 'default' => null]
+                ],
+                [
+                    'books' => [
+                        [
+                            'bookID' => '123456',
+                            'name' => 'Lord of the Rings',
+                            'id' => '2108',
+                            'avail' => '1',
+                            'cat' => 'Fantasy Books',
+                        ],
+                        [
+                            'bookID' => '123457',
+                            'name' => 'Winnie The Pooh',
+                            'id' => '3763',
+                            'avail' => '0',
+                            'cat' => 'Child Books',
+                        ],
+                    ]
+                ]
+            ],
         ];
     }
 }
