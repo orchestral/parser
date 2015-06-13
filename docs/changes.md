@@ -5,11 +5,21 @@ title: Parser Change Log
 
 ## Version 3.1 {#v3-1}
 
+### v3.1.1 {#v3-1-1}
+
+* Add functionality to swap attribute key with an alias using `item::attribute>attribute`.
+* Add functionality to parse multiple same-name same-level elements with properties using `property(::id,value)`.
+
 ### v3.1.0 {#v3-1-0}
 
 * Update support to Laravel Framework v5.1.
 
 ## Version 3.0 {#v3-0}
+
+### v3.0.1 {#v3-0-1}
+
+* Add functionality to swap attribute key with an alias using `item::attribute>attribute`.
+* Add functionality to parse multiple same-name same-level elements with properties using `property(::id,value)`.
 
 ### v3.0.0 {#v3-0-0}
 
