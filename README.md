@@ -48,14 +48,14 @@ Above installation can also be simplify by using the following command:
 
 ## Configuration
 
-Next add the service provider in `app/config/app.php`.
+Next add the service provider in `config/app.php`.
 
 ```php
 'providers' => [
 
     // ...
 
-    'Orchestra\Parser\XmlServiceProvider',
+    Orchestra\Parser\XmlServiceProvider::class,
 ],
 ```
 
