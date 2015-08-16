@@ -3,6 +3,38 @@ XML Document Parser for Laravel and PHP
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
+Imagine if you can parse
+
+```xml
+<api>
+    <user followers="5">
+        <id>1</id>
+        <email>crynobone@gmail.com</email>
+    </user>
+</api>
+```
+
+to
+
+```php
+$user = [
+    'id' => '1',
+    'email' => 'crynobone@gmail.com',
+    'followers' => '5'
+];
+```
+
+by just writing this:
+
+```php
+$xml = XmlParser::load('path/to/above.xml');
+$user = $xml->parse([
+    'id' => ['uses' => 'user.id'],
+    'email' => ['uses' => 'user.email'],
+    'followers' => ['uses' => 'user::followers'],
+]);
+```
+
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/parser.svg?style=flat-square)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://img.shields.io/packagist/dt/orchestra/parser.svg?style=flat-square)](https://packagist.org/packages/orchestra/parser)
 [![MIT License](https://img.shields.io/packagist/l/orchestra/parser.svg?style=flat-square)](https://packagist.org/packages/orchestra/parser)
@@ -15,7 +47,6 @@ Parser Component is a framework agnostic package that provide a simple way to pa
 * [Version Compatibility](#version-compatibility)
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Examples](#examples)
 
 ## Version Compatibility
 
@@ -72,36 +103,3 @@ You might want to add `Orchestra\Parser\Xml\Facade` to class aliases in `config/
 ],
 ```
 
-## Examples
-
-Here's a basic example how you can parse XML to simple array:
-
-```xml
-<api>
-    <user followers="5">
-        <id>1</id>
-        <email>crynobone@gmail.com</email>
-    </user>
-</api>
-```
-
-We can fetch the content as the following:
-
-```php
-$xml = XmlParser::load('path/to/above.xml');
-$user = $xml->parse([
-    'id' => ['uses' => 'user.id'],
-    'email' => ['uses' => 'user.email'],
-    'followers' => ['uses' => 'user::followers'],
-]);
-```
-
-And this would be equivalent of:
-
-```php
-$user = [
-    'id' => '1',
-    'email' => 'crynobone@gmail.com',
-    'followers' => '5'
-];
-```
