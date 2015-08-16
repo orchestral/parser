@@ -113,40 +113,54 @@ class Document extends BaseDocument
         }
 
         foreach ($collection as $content) {
-            $value = [];
-
             if (empty($content)) {
                 continue;
             }
 
-            foreach ($uses as $use) {
-                if (Str::contains($use, '>')) {
-                    list($name, $as) = explode('>', $use, 2);
-                } else {
-                    $name = $as = $use;
-                }
-
-                if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
-                    $item = $this->getSelfMatchingValue($content, $matches);
-
-                    if ($name == $as) {
-                        $value = array_merge($value, $item);
-                    } else {
-                        Arr::set($value, $as, $item);
-                    }
-                } else {
-                    if ($name == '@') {
-                        $name = null;
-                    }
-
-                    Arr::set($value, $as, $this->getValue($content, $name));
-                }
-            }
-
-            $values[] = $value;
+            $values[] = $this->parseValueCollection($content, $uses);
         }
 
         return $values;
+    }
+
+    /**
+     * Resolve values by collection.
+     *
+     * @param  \SimpleXMLElement  $content
+     * @param  array  $uses
+     * @param  mixed  $default
+     *
+     * @return array
+     */
+    protected function parseValueCollection(SimpleXMLElement $content, array $uses)
+    {
+        $value = [];
+
+        foreach ($uses as $use) {
+            if (Str::contains($use, '>')) {
+                list($name, $as) = explode('>', $use, 2);
+            } else {
+                $name = $as = $use;
+            }
+
+            if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
+                $item = $this->getSelfMatchingValue($content, $matches);
+
+                if ($name == $as) {
+                    $value = array_merge($value, $item);
+                } else {
+                    Arr::set($value, $as, $item);
+                }
+            } else {
+                if ($name == '@') {
+                    $name = null;
+                }
+
+                Arr::set($value, $as, $this->getValue($content, $name));
+            }
+        }
+
+        return $value;
     }
 
     /**
