@@ -85,6 +85,8 @@ Here's a basic example how you can parse XML to simple array:
 </api>
 ```
 
+We can fetch the content as the following:
+
 ```php
 $xml = XmlParser::load('path/to/above.xml');
 $user = $xml->parse([
@@ -92,4 +94,14 @@ $user = $xml->parse([
     'email' => ['uses' => 'user.email'],
     'followers' => ['uses' => 'user::followers'],
 ]);
+```
+
+And this would be equivalent of:
+
+```php
+$user = [
+    'id' => '1',
+    'email' => 'crynobone@gmail.com',
+    'followers' => '5'
+];
 ```
