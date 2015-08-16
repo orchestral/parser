@@ -137,11 +137,7 @@ class Document extends BaseDocument
         $value = [];
 
         foreach ($uses as $use) {
-            if (Str::contains($use, '>')) {
-                list($name, $as) = explode('>', $use, 2);
-            } else {
-                $name = $as = $use;
-            }
+            list($name, $as) = Str::contains($use, '>') ? explode('>', $use, 2) : [$use, $use];
 
             if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
                 $item = $this->getSelfMatchingValue($content, $matches);
@@ -152,9 +148,7 @@ class Document extends BaseDocument
                     Arr::set($value, $as, $item);
                 }
             } else {
-                if ($name == '@') {
-                    $name = null;
-                }
+                $name == '@' && $name = null;
 
                 Arr::set($value, $as, $this->getValue($content, $name));
             }
