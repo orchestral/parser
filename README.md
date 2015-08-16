@@ -59,6 +59,19 @@ Next add the service provider in `config/app.php`.
 ],
 ```
 
+### Aliases
+
+You might want to add `Orchestra\Parser\Xml\Facade` to class aliases in `config/app.php`:
+
+```php
+'aliases' => [
+
+    // ...
+
+    'XmlParser' => Orchestra\Parser\Xml\Facade::class,
+],
+```
+
 ## Examples
 
 Here's a basic example how you can parse XML to simple array:
@@ -73,11 +86,7 @@ Here's a basic example how you can parse XML to simple array:
 ```
 
 ```php
-$app = new Illuminate\Container\Container;
-$document = new Orchestra\Parser\Xml\Document($app);
-$reader = new Orchestra\Parser\Xml\Reader($document);
-
-$xml = $reader->load('path/to/above.xml');
+$xml = XmlParser::load('path/to/above.xml');
 $user = $xml->parse([
     'id' => ['uses' => 'user.id'],
     'email' => ['uses' => 'user.email'],
