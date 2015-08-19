@@ -1,6 +1,8 @@
 XML Document Parser for Laravel and PHP
 ==============
 
+[![Join the chat at https://gitter.im/orchestral/platform/components](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/orchestral/platform/components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/parser.svg?style=flat-square)](https://packagist.org/packages/orchestra/parser)
