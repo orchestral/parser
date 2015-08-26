@@ -10,6 +10,51 @@ class Document extends BaseDocument
     /**
      * {@inheritdoc}
      */
+    public function parse(array $schema, array $config = [])
+    {
+        $base       = Arr::pull($config, 'base');
+        $namespace  = Arr::pull($config, 'namespace');
+
+        is_null($base) || $this->rebase($base);
+        is_null($namespace) || $this->namespace($namespace);
+
+        return parent::parse($schema, $config);
+    }
+
+    /**
+     * Rebase document node.
+     *
+     * @param  string  $base
+     *
+     * @return void
+     */
+    public function rebase($base)
+    {
+        $this->content = data_get($this->getOriginalContent(), $base);
+    }
+
+    /**
+     * Set document namespace.
+     *
+     * @param  string  $namespace
+     *
+     * @return void
+     */
+    public function namespace($namespace)
+    {
+        $document   = $this->getContent();
+        $namespaces = $document->getNameSpaces(true);
+
+        if (! is_null($namespace) && isset($namespaces[$namespace])) {
+            $document = $document->children($namespaces[$namespace]);
+        }
+
+        $this->content = $document;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getValue($content, $use, $default = null)
     {
         if (preg_match('/^(.*)\[(.*)\]$/', $use, $matches) && $content instanceof SimpleXMLElement) {
@@ -113,40 +158,48 @@ class Document extends BaseDocument
         }
 
         foreach ($collection as $content) {
-            $value = [];
-
             if (empty($content)) {
                 continue;
             }
 
-            foreach ($uses as $use) {
-                if (Str::contains($use, '>')) {
-                    list($name, $as) = explode('>', $use, 2);
-                } else {
-                    $name = $as = $use;
-                }
-
-                if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
-                    $item = $this->getSelfMatchingValue($content, $matches);
-
-                    if ($name == $as) {
-                        $value = array_merge($value, $item);
-                    } else {
-                        Arr::set($value, $as, $item);
-                    }
-                } else {
-                    if ($name == '@') {
-                        $name = null;
-                    }
-
-                    Arr::set($value, $as, $this->getValue($content, $name));
-                }
-            }
-
-            $values[] = $value;
+            $values[] = $this->parseValueCollection($content, $uses);
         }
 
         return $values;
+    }
+
+    /**
+     * Resolve values by collection.
+     *
+     * @param  \SimpleXMLElement  $content
+     * @param  array  $uses
+     * @param  mixed  $default
+     *
+     * @return array
+     */
+    protected function parseValueCollection(SimpleXMLElement $content, array $uses)
+    {
+        $value = [];
+
+        foreach ($uses as $use) {
+            list($name, $as) = Str::contains($use, '>') ? explode('>', $use, 2) : [$use, $use];
+
+            if (preg_match('/^([A-Za-z0-9_\-\.]+)\((.*)\=(.*)\)$/', $name, $matches)) {
+                $item = $this->getSelfMatchingValue($content, $matches);
+
+                if ($name == $as) {
+                    $value = array_merge($value, $item);
+                } else {
+                    Arr::set($value, $as, $item);
+                }
+            } else {
+                $name == '@' && $name = null;
+
+                Arr::set($value, $as, $this->getValue($content, $name));
+            }
+        }
+
+        return $value;
     }
 
     /**
