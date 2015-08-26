@@ -8,69 +8,6 @@ use Orchestra\Parser\Document as BaseDocument;
 class Document extends BaseDocument
 {
     /**
-     * Original Content.
-     *
-     * @var mixed
-     */
-    protected $originalContent;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function parse(array $schema, array $config = [])
-    {
-        $base       = Arr::pull($config, 'base');
-        $namespace  = Arr::pull($config, 'namespace');
-        $document   = $this->getOriginalContent();
-        $namespaces = $document->getNameSpaces(true);
-
-        if (! is_null($base)) {
-            $document = data_get($document, $base);
-        }
-
-        if (! is_null($namespace) && isset($namespaces[$namespace])) {
-            $document = $document->children($namespaces[$namespace]);
-        }
-
-        $this->content = $document;
-
-        return parent::parse($schema, $config);
-    }
-
-    /**
-     * Set the content.
-     *
-     * @param  mixed  $content
-     *
-     * @return $this
-     */
-    public function setContent($content)
-    {
-        $this->content         = $content;
-        $this->originalContent = $content;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * Get original content.
-     *
-     * @return mixed
-     */
-    public function getOriginalContent()
-    {
-        return $this->originalContent;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function parse(array $schema, array $config = [])
