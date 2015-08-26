@@ -10,6 +10,29 @@ class Document extends BaseDocument
     /**
      * {@inheritdoc}
      */
+    public function parse(array $schema, array $config = [])
+    {
+        $base       = Arr::pull($config, 'base');
+        $namespace  = Arr::pull($config, 'namespace');
+        $document   = $this->content;
+        $namespaces = $document->getNameSpaces(true);
+
+        if (! is_null($base)) {
+            $document = data_get($document, $base);
+        }
+
+        if (! is_null($namespace) && isset($namespaces[$namespace])) {
+            $document = $document->children($namespaces[$namespace]);
+        }
+
+        $this->content = $document;
+
+        return parent::parse($schema, $config);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getValue($content, $use, $default = null)
     {
         if (preg_match('/^(.*)\[(.*)\]$/', $use, $matches) && $content instanceof SimpleXMLElement) {
