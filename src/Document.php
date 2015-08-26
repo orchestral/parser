@@ -14,11 +14,18 @@ abstract class Document
     protected $app;
 
     /**
-     * Content.
+     * The content.
      *
      * @var mixed
      */
     protected $content;
+
+    /**
+     * The original content.
+     *
+     * @var mixed
+     */
+    protected $originalContent;
 
     /**
      * Construct a new document.
@@ -58,11 +65,14 @@ abstract class Document
      *
      * @param  mixed  $content
      *
-     * @return void
+     * @return $this
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content         = $content;
+        $this->originalContent = $content;
+
+        return $this;
     }
 
     /**
@@ -73,6 +83,16 @@ abstract class Document
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Get original content.
+     *
+     * @return mixed
+     */
+    public function getOriginalContent()
+    {
+        return $this->originalContent;
     }
 
     /**
@@ -109,13 +129,13 @@ abstract class Document
         }
 
         if (! is_array($config['uses'])) {
-            return $this->getValue($this->content, $config['uses'], $hash);
+            return $this->getValue($this->getContent(), $config['uses'], $hash);
         }
 
         $values = [];
 
         foreach ($config['uses'] as $use) {
-            $values[] = $this->getValue($this->content, $use, $hash);
+            $values[] = $this->getValue($this->getContent(), $use, $hash);
         }
 
         return $values;
