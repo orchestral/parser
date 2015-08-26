@@ -73,6 +73,51 @@ class Document extends BaseDocument
     /**
      * {@inheritdoc}
      */
+    public function parse(array $schema, array $config = [])
+    {
+        $base       = Arr::pull($config, 'base');
+        $namespace  = Arr::pull($config, 'namespace');
+
+        is_null($base) || $this->rebase($base);
+        is_null($namespace) || $this->namespace($namespace);
+
+        return parent::parse($schema, $config);
+    }
+
+    /**
+     * Rebase document node.
+     *
+     * @param  string  $base
+     *
+     * @return void
+     */
+    public function rebase($base)
+    {
+        $this->content = data_get($this->getOriginalContent(), $base);
+    }
+
+    /**
+     * Set document namespace.
+     *
+     * @param  string  $namespace
+     *
+     * @return void
+     */
+    public function namespace($namespace)
+    {
+        $document   = $this->getContent();
+        $namespaces = $document->getNameSpaces(true);
+
+        if (! is_null($namespace) && isset($namespaces[$namespace])) {
+            $document = $document->children($namespaces[$namespace]);
+        }
+
+        $this->content = $document;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getValue($content, $use, $default = null)
     {
         if (preg_match('/^(.*)\[(.*)\]$/', $use, $matches) && $content instanceof SimpleXMLElement) {
