@@ -40,8 +40,6 @@ class Reader extends BaseReader
             throw new InvalidContentException('Unable to parse XML from string.');
         }
 
-        $this->document->setContent($xml);
-
-        return $this->document;
+        return $this->document->setContent($xml);
     }
 }

@@ -58,11 +58,13 @@ abstract class Document
      *
      * @param  mixed  $content
      *
-     * @return void
+     * @return $this
      */
     public function setContent($content)
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**

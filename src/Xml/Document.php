@@ -8,13 +8,20 @@ use Orchestra\Parser\Document as BaseDocument;
 class Document extends BaseDocument
 {
     /**
+     * Original Content.
+     *
+     * @var mixed
+     */
+    protected $originalContent;
+
+    /**
      * {@inheritdoc}
      */
     public function parse(array $schema, array $config = [])
     {
         $base       = Arr::pull($config, 'base');
         $namespace  = Arr::pull($config, 'namespace');
-        $document   = $this->content;
+        $document   = $this->getOriginalContent();
         $namespaces = $document->getNameSpaces(true);
 
         if (! is_null($base)) {
@@ -28,6 +35,39 @@ class Document extends BaseDocument
         $this->content = $document;
 
         return parent::parse($schema, $config);
+    }
+
+    /**
+     * Set the content.
+     *
+     * @param  mixed  $content
+     *
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content         = $content;
+        $this->originalContent = $content;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Get original content.
+     *
+     * @return mixed
+     */
+    public function getOriginalContent()
+    {
+        return $this->originalContent;
     }
 
     /**
