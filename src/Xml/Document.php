@@ -8,6 +8,13 @@ use Orchestra\Parser\Document as BaseDocument;
 class Document extends BaseDocument
 {
     /**
+     * Available namespaces.
+     *
+     * @var array|null
+     */
+    protected $namespaces;
+
+    /**
      * Rebase document node.
      *
      * @param  string|null  $base
@@ -33,7 +40,7 @@ class Document extends BaseDocument
     public function namespaced($namespace, array $schema, array $config = [])
     {
         $document   = $this->getContent();
-        $namespaces = $this->getOriginalContent()->getNameSpaces(true);
+        $namespaces = $this->getAvailableNamespaces();
 
         if (! is_null($namespace) && isset($namespaces[$namespace])) {
             $document = $document->children($namespaces[$namespace]);
@@ -141,9 +148,18 @@ class Document extends BaseDocument
      */
     protected function getValueCollection(SimpleXMLElement $content, array $matches, $default = null)
     {
-        $collection = data_get($content, $matches[1]);
-        $uses       = explode(',', $matches[2]);
-        $values     = [];
+        $parent = $matches[1];
+        $namespace = null;
+
+        if (Str::contains($parent, '/')) {
+            list($parent, $namespace) = explode('/', $parent, 2);
+        }
+
+        $collection = data_get($content, $parent);
+        $namespaces = $this->getAvailableNamespaces();
+
+        $uses   = explode(',', $matches[2]);
+        $values = [];
 
         if (! $collection instanceof SimpleXMLElement) {
             return $default;
@@ -152,6 +168,10 @@ class Document extends BaseDocument
         foreach ($collection as $content) {
             if (empty($content)) {
                 continue;
+            }
+
+            if (! is_null($namespace) && isset($namespaces[$namespace]) ) {
+                $content = $content->children($namespaces[$namespace]);
             }
 
             $values[] = $this->parseValueCollection($content, $uses);
@@ -220,5 +240,20 @@ class Document extends BaseDocument
         }
 
         return $item;
+    }
+
+    /**
+     * Get available namespaces, and cached it during runtime to avoid
+     * overhead.
+     *
+     * @return array|null
+     */
+    protected function getAvailableNamespaces()
+    {
+        if (is_null($this->namespaces)) {
+            $this->namespaces = $this->getOriginalContent()->getNameSpaces(true);
+        }
+
+        return $this->namespaces;
     }
 }
