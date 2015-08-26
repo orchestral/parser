@@ -16,7 +16,7 @@ class Document extends BaseDocument
         $namespace  = Arr::pull($config, 'namespace');
 
         $this->rebase($base);
-        is_null($namespace) || $this->namespace($namespace);
+        is_null($namespace) || $this->namespaced($namespace);
 
         return parent::parse($schema, $config);
     }
@@ -40,7 +40,7 @@ class Document extends BaseDocument
      *
      * @return void
      */
-    public function namespace($namespace)
+    public function namespaced($namespace)
     {
         $document   = $this->getContent();
         $namespaces = $document->getNameSpaces(true);
