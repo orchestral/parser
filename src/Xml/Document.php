@@ -8,20 +8,6 @@ use Orchestra\Parser\Document as BaseDocument;
 class Document extends BaseDocument
 {
     /**
-     * {@inheritdoc}
-     */
-    public function parse(array $schema, array $config = [])
-    {
-        $base       = Arr::pull($config, 'base');
-        $namespace  = Arr::pull($config, 'namespace');
-
-        $this->rebase($base);
-        is_null($namespace) || $this->namespaced($namespace);
-
-        return parent::parse($schema, $config);
-    }
-
-    /**
      * Rebase document node.
      *
      * @param  string|null  $base
@@ -36,16 +22,18 @@ class Document extends BaseDocument
     }
 
     /**
-     * Set document namespace.
+     * Set document namespace and parse the XML.
      *
      * @param  string  $namespace
+     * @param  array  $schema
+     * @param  array  $config
      *
-     * @return $this
+     * @return array
      */
-    public function namespaced($namespace)
+    public function namespaced($namespace, array $schema, array $config = [])
     {
         $document   = $this->getContent();
-        $namespaces = $document->getNameSpaces(true);
+        $namespaces = $this->getOriginalContent()->getNameSpaces(true);
 
         if (! is_null($namespace) && isset($namespaces[$namespace])) {
             $document = $document->children($namespaces[$namespace]);
@@ -53,7 +41,7 @@ class Document extends BaseDocument
 
         $this->content = $document;
 
-        return $this;
+        return $this->parse($schema, $config);
     }
 
     /**
