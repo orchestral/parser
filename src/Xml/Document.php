@@ -15,7 +15,7 @@ class Document extends BaseDocument
         $base       = Arr::pull($config, 'base');
         $namespace  = Arr::pull($config, 'namespace');
 
-        is_null($base) || $this->rebase($base);
+        $this->rebase($base);
         is_null($namespace) || $this->namespace($namespace);
 
         return parent::parse($schema, $config);
@@ -24,11 +24,11 @@ class Document extends BaseDocument
     /**
      * Rebase document node.
      *
-     * @param  string  $base
+     * @param  string|null  $base
      *
      * @return void
      */
-    public function rebase($base)
+    public function rebase($base = null)
     {
         $this->content = data_get($this->getOriginalContent(), $base);
     }
