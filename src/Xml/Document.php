@@ -26,11 +26,13 @@ class Document extends BaseDocument
      *
      * @param  string|null  $base
      *
-     * @return void
+     * @return $this
      */
     public function rebase($base = null)
     {
         $this->content = data_get($this->getOriginalContent(), $base);
+
+        return $this;
     }
 
     /**
@@ -38,7 +40,7 @@ class Document extends BaseDocument
      *
      * @param  string  $namespace
      *
-     * @return void
+     * @return $this
      */
     public function namespaced($namespace)
     {
@@ -50,6 +52,8 @@ class Document extends BaseDocument
         }
 
         $this->content = $document;
+
+        return $this;
     }
 
     /**
