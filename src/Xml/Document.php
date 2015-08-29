@@ -148,7 +148,7 @@ class Document extends BaseDocument
      */
     protected function getValueCollection(SimpleXMLElement $content, array $matches, $default = null)
     {
-        $parent = $matches[1];
+        $parent    = $matches[1];
         $namespace = null;
 
         if (Str::contains($parent, '/')) {
@@ -170,7 +170,7 @@ class Document extends BaseDocument
                 continue;
             }
 
-            if (! is_null($namespace) && isset($namespaces[$namespace]) ) {
+            if (! is_null($namespace) && isset($namespaces[$namespace])) {
                 $content = $content->children($namespaces[$namespace]);
             }
 
@@ -185,7 +185,6 @@ class Document extends BaseDocument
      *
      * @param  \SimpleXMLElement  $content
      * @param  array  $uses
-     * @param  mixed  $default
      *
      * @return array
      */
