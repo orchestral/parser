@@ -19,7 +19,7 @@
         "php": ">=5.5.0",
         "illuminate/container": "~5.1.0",
         "illuminate/support": "~5.1.0",
-        "paragonie/random_compat": "^1.0.6"
+        "paragonie/random_compat": "~1.1"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*"
