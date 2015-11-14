@@ -5,6 +5,10 @@ title: Parser Change Log
 
 ## Version 3.1 {#v3-1}
 
+### v3.1.3 {#v3-1-3}
+
+* Add `paragonie/random_compat` as dependencies.
+
 ### v3.1.2 {#v3-1-2}
 
 * Introduce `Orchestra\Parser\Xml\Document::rebase()` in order to change the parent node for faster parsing.
