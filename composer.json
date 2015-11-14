@@ -1,32 +1,33 @@
 {
-	"name": "orchestra/parser",
-	"description": "XML Document Parser for Laravel and PHP",
-	"keywords": ["laravel", "orchestral", "orchestra-platform", "xml", "parser"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Mior Muhammad Zaki",
-			"email": "crynobone@gmail.com",
-			"homepage": "https://github.com/crynobone"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"Orchestra\\Parser\\": "src/"
-		}
-	},
-	"require": {
-		"php": ">=5.5.0",
-		"illuminate/container": "~5.2.0",
-		"illuminate/support": "~5.2.0"
-	},
-	"require-dev": {
-		"mockery/mockery": "0.9.*"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "3.2-dev"
-		}
-	},
-	"minimum-stability": "dev"
+    "name": "orchestra/parser",
+    "description": "XML Document Parser for Laravel and PHP",
+    "keywords": ["laravel", "orchestral", "orchestra-platform", "xml", "parser"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com",
+            "homepage": "https://github.com/crynobone"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Orchestra\\Parser\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "illuminate/container": "~5.2.0",
+        "illuminate/support": "~5.2.0",
+        "paragonie/random_compat": "~1.1"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.2-dev"
+        }
+    },
+    "minimum-stability": "dev"
 }
