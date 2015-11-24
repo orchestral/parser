@@ -3,6 +3,18 @@ title: Parser Change Log
 
 ---
 
+## Version 3.2 {#v3-2}
+
+### v3.2.0 {#v3-2-0}
+
+* Update support to Laravel Framework v5.2.
+* Add functionality to swap attribute key with an alias using `item::attribute>attribute`. 
+* Add functionality to parse multiple same-name same-level elements with properties using `property(::id,value)`.
+* Introduce `Orchestra\Parser\Xml\Document::rebase()` in order to change the parent node for faster parsing.
+* Introduce `Orchestra\Parser\Xml\Document::namespaced()` to fetch namespaced elements.
+* Add support to access namespaced elements via collection by using `item/ns[value1,value2]` etc.
+* Add `paragonie/random_compat` as dependencies.
+
 ## Version 3.1 {#v3-1}
 
 ### v3.1.3 {#v3-1-3}
