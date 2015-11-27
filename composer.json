@@ -18,7 +18,8 @@
     "require": {
         "php": ">=5.5.0",
         "illuminate/support": "5.*",
-        "paragonie/random_compat": "^1.1"
+        "paragonie/random_compat": "^1.1",
+        "illuminate/contracts": "5.*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
