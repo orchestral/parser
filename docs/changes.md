@@ -17,6 +17,10 @@ title: Parser Change Log
 
 ## Version 3.1 {#v3-1}
 
+### v3.1.4 {#v3-1-4}
+
+* Move core XML parser to a separate repository as a framework agnostic component.
+
 ### v3.1.3 {#v3-1-3}
 
 * Add `paragonie/random_compat` as dependencies.
@@ -37,6 +41,10 @@ title: Parser Change Log
 * Update support to Laravel Framework v5.1.
 
 ## Version 3.0 {#v3-0}
+
+### v3.0.3 {#v3-0-3}
+
+* Move core XML parser to a separate repository as a framework agnostic component.
 
 ### v3.0.2 {#v3-0-2}
 
