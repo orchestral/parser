@@ -184,6 +184,36 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
             [
 '<api>
     <user>
+        <id>1</id>
+        <name>Mior Muhammad Zaki</name>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Taylor Otwell</name>
+        <tag>Laravel</tag>
+        <tag>PHP</tag>
+    </user>
+</api>',
+                [
+                    'users' => ['uses' => 'user[id,name>fullname,tag(!=@)]'],
+                ],
+                [
+                    'users' => [
+                        [
+                            'id'   => '1',
+                            'fullname' => 'Mior Muhammad Zaki',
+                        ],
+                        [
+                            'id'   => '2',
+                            'fullname' => 'Taylor Otwell',
+                            'tag' => ['Laravel', 'PHP']
+                        ],
+                    ],
+                ],
+            ],
+            [
+'<api>
+    <user>
         <property id="id">
             <value>1</value>
         </property>

@@ -228,14 +228,18 @@ class Document extends BaseDocument
         $meta = $matches[3];
 
         $item = [];
+        $uses = ($key == '!' ? $meta : "{$key},{$meta}");
 
-        $collection = $this->getValue($content, "{$name}[{$key},{$meta}]");
+        $collection = $this->getValue($content, "{$name}[{$uses}]");
 
-        foreach ($collection as $collect) {
-            $k = $collect[$key];
+        foreach ((array) $collection as $collect) {
             $v = $collect[$meta];
 
-            $item[$k] = $v;
+            if ($key == '!') {
+                $item[$name][] = $v;
+            } else {
+                $item[$collect[$key]] = $v;
+            }
         }
 
         return $item;
