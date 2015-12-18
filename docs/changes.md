@@ -26,6 +26,10 @@ title: Parser Change Log
 
 ## Version 3.0 {#v3-0}
 
+### v3.0.3 {#v3-0-3}
+
+* Move core XML parser to a separate repository as a framework agnostic component.
+
 ### v3.0.2 {#v3-0-2}
 
 * Introduce `Orchestra\Parser\Xml\Document::rebase()` in order to change the parent node for faster parsing.
