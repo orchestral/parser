@@ -17,12 +17,12 @@
     },
     "require": {
         "php": ">=5.5.0",
-        "illuminate/container": "~5.1.0",
-        "illuminate/support": "~5.1.0",
-        "paragonie/random_compat": "~1.1"
+        "laravie/parser": "~1.0",
+        "illuminate/container": "~5.1.0"
     },
     "require-dev": {
-        "mockery/mockery": "0.9.*"
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0|~5.0"
     },
     "extra": {
         "branch-alias": {
