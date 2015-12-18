@@ -41,7 +41,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Orchestra\Parser\Xml\Reader::extract() method throws exception.
      *
-     * @expectedException \Orchestra\Parser\InvalidContentException
+     * @expectedException \Laravie\Parser\InvalidContentException
      */
     public function testExtractMethodThrowsException()
     {
