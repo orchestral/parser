@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Parser\Xml;
+<?php
+
+namespace Orchestra\Parser\Xml;
 
 use Illuminate\Contracts\Container\Container;
 use Laravie\Parser\Xml\Document as BaseDocument;

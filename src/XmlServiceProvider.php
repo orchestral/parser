@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Parser;
+<?php
+
+namespace Orchestra\Parser;
 
 use Illuminate\Support\ServiceProvider;
 use Orchestra\Parser\Xml\Reader as XmlReader;

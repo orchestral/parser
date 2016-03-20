@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Parser\Xml;
+<?php
+
+namespace Orchestra\Parser\Xml;
 
 class Facade extends \Illuminate\Support\Facades\Facade
 {
