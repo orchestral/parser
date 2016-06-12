@@ -21,8 +21,8 @@
         "illuminate/container": "~5.3.0"
     },
     "require-dev": {
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0|~5.0",
+        "mockery/mockery": "^0.9.4",
+        "phpunit/phpunit": "~4.8|~5.0",
         "illuminate/support": "~5.3.0"
     },
     "extra": {
