@@ -16,18 +16,18 @@
         }
     },
     "require": {
-        "php": ">=5.6.0",
-        "illuminate/container": "~5.4.0",
+        "php": ">=7.0",
+        "illuminate/container": "~5.5.0",
         "laravie/parser": "~1.1"
     },
     "require-dev": {
-        "illuminate/support": "~5.4.0",
+        "illuminate/support": "~5.5.0",
         "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "~4.8|~5.0"
+        "phpunit/phpunit": "~5.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.4-dev"
+            "dev-master": "3.5-dev"
         }
     },
     "config": {
