@@ -23,11 +23,16 @@
     "require-dev": {
         "illuminate/support": "~5.5.0",
         "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpunit": "~6.0"
     },
     "extra": {
         "branch-alias": {
             "dev-master": "3.5-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Orchestra\\Parser\\XmlServiceProvider"
+            ]
         }
     },
     "config": {
