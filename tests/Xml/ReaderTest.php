@@ -1,10 +1,13 @@
-<?php namespace Orchestra\Parser\Xml\TestCase;
+<?php
 
-use Illuminate\Container\Container;
-use Orchestra\Parser\Xml\Document;
+namespace Orchestra\Parser\Xml\TestCase;
+
+use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\Xml\Reader;
+use Orchestra\Parser\Xml\Document;
+use Illuminate\Container\Container;
 
-class ReaderTest extends \PHPUnit_Framework_TestCase
+class ReaderTest extends TestCase
 {
     /**
      * Test Orchestra\Parser\Xml\Reader::extract() method.

@@ -1,10 +1,13 @@
-<?php namespace Orchestra\Parser\TestCase;
+<?php
+
+namespace Orchestra\Parser\TestCase;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Illuminate\Container\Container;
 use Orchestra\Parser\XmlServiceProvider;
 
-class XmlServiceProviderTest extends \PHPUnit_Framework_TestCase
+class XmlServiceProviderTest extends TestCase
 {
     /**
      * Teardown the test environment.
