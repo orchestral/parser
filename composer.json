@@ -18,7 +18,7 @@
     "require": {
         "php": ">=7.0",
         "illuminate/container": "~5.5.0",
-        "laravie/parser": "~1.1"
+        "laravie/parser": "~1.2"
     },
     "require-dev": {
         "illuminate/support": "~5.5.0",
