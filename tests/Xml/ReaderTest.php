@@ -1,10 +1,11 @@
 <?php namespace Orchestra\Parser\Xml\TestCase;
 
-use Illuminate\Container\Container;
-use Orchestra\Parser\Xml\Document;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\Xml\Reader;
+use Orchestra\Parser\Xml\Document;
+use Illuminate\Container\Container;
 
-class ReaderTest extends \PHPUnit_Framework_TestCase
+class ReaderTest extends TestCase
 {
     /**
      * Test Orchestra\Parser\Xml\Reader::extract() method.
@@ -33,7 +34,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $app      = new Container();
         $document = new Document($app);
         $stub     = new Reader($document);
-        $output   = $stub->load(__DIR__.'/stub/foo.xml');
+        $output   = $stub->load(__DIR__.'/stubs/foo.xml');
 
         $this->assertInstanceOf('\Orchestra\Parser\Xml\Document', $output);
     }

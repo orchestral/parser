@@ -1,15 +1,16 @@
 <?php namespace Orchestra\Parser\TestCase\Xml;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\Xml\Document;
 use Illuminate\Container\Container;
 
-class DocumentTest extends \PHPUnit_Framework_TestCase
+class DocumentTest extends TestCase
 {
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown()
     {
         m::close();
     }

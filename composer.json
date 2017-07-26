@@ -23,7 +23,7 @@
     "require-dev": {
         "illuminate/support": "~5.4.0",
         "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "~4.8|~5.0"
+        "phpunit/phpunit": "~5.7"
     },
     "extra": {
         "branch-alias": {
