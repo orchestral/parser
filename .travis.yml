@@ -37,5 +37,5 @@ matrix:
   allow_failures:
     - env: setup=stable
     - env: setup=coveralls coverage=yes
-    - php: hhvm
+    - php: 7.2
   fast_finish: true
