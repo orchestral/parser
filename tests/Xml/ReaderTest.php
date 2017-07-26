@@ -36,7 +36,7 @@ class ReaderTest extends TestCase
         $app      = new Container();
         $document = new Document($app);
         $stub     = new Reader($document);
-        $output   = $stub->load(__DIR__.'/stub/foo.xml');
+        $output   = $stub->load(__DIR__.'/stubs/foo.xml');
 
         $this->assertInstanceOf('\Orchestra\Parser\Xml\Document', $output);
     }
