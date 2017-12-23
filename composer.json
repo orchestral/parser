@@ -32,7 +32,10 @@
         "laravel": {
             "providers": [
                 "Orchestra\\Parser\\XmlServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "XmlParser": "Orchestra\\Parser\\Xml\\Facade"
+            }
         }
     },
     "config": {
