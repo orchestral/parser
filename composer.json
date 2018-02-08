@@ -17,17 +17,17 @@
     },
     "require": {
         "php": ">=7.1",
-        "illuminate/container": "~5.6.0",
+        "illuminate/container": "~5.7.0",
         "laravie/parser": "~1.2"
     },
     "require-dev": {
-        "illuminate/support": "~5.6.0",
+        "illuminate/support": "~5.7.0",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "~7.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.6-dev"
+            "dev-master": "3.7-dev"
         },
         "laravel": {
             "providers": [
