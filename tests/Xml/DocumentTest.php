@@ -12,20 +12,23 @@ class DocumentTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
     /**
-     * Test Orchestra\Parser\Xml\Document::parse() method.
-     *
      * @test
      * @dataProvider dataCollectionProvider
      */
-    public function testParseMethod($content, $schema, $expected)
+    public function it_can_parse_given_xml($content, $schema, $expected)
     {
-        $stub = new DocumentStub(new Container());
+        $stub = new class(new Container()) extends Document {
+            public function filterStrToUpper($value)
+            {
+                return strtoupper($value);
+            }
+        };
 
         $stub->setContent(simplexml_load_string($content));
 
@@ -47,7 +50,7 @@ class DocumentTest extends TestCase
                     'hello'    => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
                     'world'    => ['uses' => 'world', 'default' => false],
                     'foobar'   => ['uses' => 'bar::foobar', 'default' => false],
-                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => '\Orchestra\Parser\TestCase\Xml\FilterStub@filterStrToLower'],
+                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => FilterStub::class.'@filterStrToLower'],
                     'google'   => 'google.com',
                     'facebook' => ['default' => 'facebook.com'],
                 ],
@@ -62,14 +65,6 @@ class DocumentTest extends TestCase
                 ],
             ],
         ];
-    }
-}
-
-class DocumentStub extends \Orchestra\Parser\Xml\Document
-{
-    public function filterStrToUpper($value)
-    {
-        return strtoupper($value);
     }
 }
 

@@ -3,7 +3,7 @@ XML Document Parser for Laravel and PHP
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
-[![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=master)](https://travis-ci.org/orchestral/parser)
+[![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=3.6)](https://travis-ci.org/orchestral/parser)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/parser/version)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads)](https://packagist.org/packages/orchestra/parser)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/parser/v/unstable)](//packagist.org/packages/orchestra/parser)
@@ -59,7 +59,7 @@ Laravel    | Parser
  5.3.x     | 3.3.x
  5.4.x     | 3.4.x
  5.5.x     | 3.5.x
- 5.6.x     | 3.6.x@dev
+ 5.6.x     | 3.6.x
 
 ## Installation
 

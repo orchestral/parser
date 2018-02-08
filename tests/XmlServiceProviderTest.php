@@ -12,24 +12,21 @@ class XmlServiceProviderTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test Orchestra\Parser\XmlServiceProvider::$defer property.
-     *
-     * @test
-     */
-    public function testServiceProviderIsDeferred()
+    /** @test */
+    public function it_deferred_the_service_registration()
     {
         $stub = new XmlServiceProvider(null);
 
         $this->assertTrue($stub->isDeferred());
     }
 
-    public function testRegisterMethod()
+    /** @test */
+    public function it_register_expected_services()
     {
         $app = new Container();
 
@@ -39,7 +36,8 @@ class XmlServiceProviderTest extends TestCase
         $this->assertInstanceOf('\Orchestra\Parser\Xml\Reader', $app['orchestra.parser.xml']);
     }
 
-    public function testProvidesMethod()
+    /** @test */
+    public function it_provides_expected_services()
     {
         $stub = new XmlServiceProvider(null);
 
