@@ -14,10 +14,10 @@ class ReaderTest extends TestCase
     {
         $xml = '<xml><foo>foobar</foo></xml>';
 
-        $app      = new Container();
+        $app = new Container();
         $document = new Document($app);
-        $stub     = new Reader($document);
-        $output   = $stub->extract($xml);
+        $stub = new Reader($document);
+        $output = $stub->extract($xml);
 
         $this->assertInstanceOf('\Orchestra\Parser\Xml\Document', $output);
     }
