@@ -1,39 +1,18 @@
 <?php
 
-namespace Orchestra\Parser\TestCase;
+namespace Orchestra\Parser\TestCase\Unit;
 
-use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Illuminate\Container\Container;
 use Orchestra\Parser\XmlServiceProvider;
 
 class XmlServiceProviderTest extends TestCase
 {
-    /**
-     * Teardown the test environment.
-     */
-    protected function tearDown(): void
-    {
-        m::close();
-    }
-
     /** @test */
     public function it_deferred_the_service_registration()
     {
         $stub = new XmlServiceProvider(null);
 
         $this->assertTrue($stub->isDeferred());
-    }
-
-    /** @test */
-    public function it_register_expected_services()
-    {
-        $app = new Container();
-
-        $stub = new XmlServiceProvider($app);
-        $stub->register();
-
-        $this->assertInstanceOf('\Orchestra\Parser\Xml\Reader', $app['orchestra.parser.xml']);
     }
 
     /** @test */

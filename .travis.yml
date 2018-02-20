@@ -1,4 +1,5 @@
 language: php
+
 sudo: false
 
 php:
@@ -7,8 +8,11 @@ php:
 
 env:
   global:
-    - setup=basic
     - coverage=no
+  matrix:
+    - setup=basic
+    - setup=lowest
+    - setup=stable
 
 before_script:
   - travis_retry composer self-update
@@ -27,10 +31,6 @@ after_script:
 
 matrix:
   include:
-    - php: 7.1
-      env: setup=lowest
-    - php: 7.1
-      env: setup=stable
     - php: 7.1
       env: setup=coveralls coverage=yes
   allow_failures:
