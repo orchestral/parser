@@ -27,7 +27,6 @@ class DocumentTest extends TestCase
                 </people>'
         ));
 
-
         $result = $document->namespaced('p', [], []);
 
         $this->assertCount(0, $result);
@@ -466,6 +465,3 @@ class DocumentTest extends TestCase
         ];
     }
 }
-
-
-

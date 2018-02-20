@@ -33,5 +33,4 @@ abstract class TestCase extends Testbench
             \Orchestra\Parser\XmlServiceProvider::class,
         ];
     }
-
 }

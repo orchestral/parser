@@ -2,7 +2,6 @@
 
 namespace Orchestra\Parser\TestCase\Unit;
 
-use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\Xml\Document;
 use Illuminate\Container\Container;
