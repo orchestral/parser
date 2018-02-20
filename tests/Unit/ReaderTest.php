@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Parser\Xml\TestCase;
+namespace Orchestra\Parser\TestCase\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\Xml\Reader;
