@@ -32,7 +32,7 @@ class Document extends BaseDocument
      *
      * @return array
      */
-    protected function makeFilterResolver($class, $method)
+    protected function makeFilterResolver($class, $method): array
     {
         return [$this->app->make($class), $method];
     }
