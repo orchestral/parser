@@ -27,12 +27,12 @@ class Document extends BaseDocument
     /**
      * Make filter resolver.
      *
-     * @param  array  $class
-     * @param  mixed  $method
+     * @param  string  $class
+     * @param  string  $method
      *
      * @return array
      */
-    protected function makeFilterResolver($class, $method): array
+    protected function makeFilterResolver(string $class, string $method): array
     {
         return [$this->app->make($class), $method];
     }
@@ -40,12 +40,12 @@ class Document extends BaseDocument
     /**
      * Call filter to parse the value.
      *
-     * @param  array  $resolver
+     * @param  callable  $resolver
      * @param  mixed  $value
      *
      * @return mixed
      */
-    protected function callFilterResolver($resolver, $value)
+    protected function callFilterResolver(callable $resolver, $value)
     {
         return $this->app->call($resolver, ['value' => $value]);
     }
