@@ -33,6 +33,8 @@ $user = [
 by just writing this:
 
 ```php
+use Orchestra\Parser\Xml\Facade as XmlParser;
+
 $xml = XmlParser::load('path/to/above.xml');
 $user = $xml->parse([
     'id' => ['uses' => 'user.id'],
