@@ -8,6 +8,7 @@ Parser Component is a framework agnostic package that provide a simple way to pa
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads)](https://packagist.org/packages/orchestra/parser)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/parser/v/unstable)](//packagist.org/packages/orchestra/parser)
 [![License](https://poser.pugx.org/orchestra/parser/license)](https://packagist.org/packages/orchestra/parser)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/parser/badge.svg?branch=3.6)](https://coveralls.io/github/orchestral/parser?branch=3.6)
 
 Imagine if you can parse
 
