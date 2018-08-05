@@ -22,7 +22,7 @@
     },
     "require": {
         "php": ">=7.1",
-        "illuminate/container": "dev-master",
+        "illuminate/container": "~5.8.0",
         "laravie/parser": "^2.0"
     },
     "require-dev": {
