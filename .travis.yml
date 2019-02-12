@@ -5,6 +5,7 @@ sudo: false
 php:
   - 7.1
   - 7.2
+  - 7.3
   - nightly
 
 env:
@@ -35,5 +36,6 @@ matrix:
     - php: 7.1
       env: setup=coveralls coverage=yes
   allow_failures:
+    - php: nightly
     - env: setup=coveralls coverage=yes
   fast_finish: true
