@@ -17,6 +17,7 @@ return PhpCsFixer\Config::create()
                 'phpdoc_no_empty_return' => false,
                 'phpdoc_order' => true,
                 'pre_increment' => false,
+                'single_trait_insert_per_statement' => false,
                 'yoda_style' => false,
             ])
             ->setFinder($finder);
