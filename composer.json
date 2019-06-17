@@ -22,16 +22,16 @@
     },
     "require": {
         "php": ">=7.2",
-        "illuminate/container": "~5.9.0",
+        "illuminate/container": "dev-master",
         "laravie/parser": "^2.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.2",
-        "orchestra/testbench": "~3.9.0"
+        "orchestra/testbench": "~3.10.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.9-dev"
+            "dev-master": "3.10-dev"
         },
         "laravel": {
             "providers": [
