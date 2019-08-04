@@ -27,7 +27,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.2",
-        "orchestra/testbench": "~4.0"
+        "orchestra/testbench": "^4.0"
     },
     "extra": {
         "branch-alias": {
