@@ -3,12 +3,12 @@ XML Document Parser for Laravel and PHP
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
-[![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=master)](https://travis-ci.org/orchestral/parser)
+[![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=4.x)](https://travis-ci.org/orchestral/parser)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/parser/version)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads)](https://packagist.org/packages/orchestra/parser)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/parser/v/unstable)](//packagist.org/packages/orchestra/parser)
 [![License](https://poser.pugx.org/orchestra/parser/license)](https://packagist.org/packages/orchestra/parser)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/parser/badge.svg?branch=master)](https://coveralls.io/github/orchestral/parser?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/parser/badge.svg?branch=4.x)](https://coveralls.io/github/orchestral/parser?branch=4.x)
 
 Imagine if you can parse
 
@@ -59,7 +59,7 @@ Laravel    | Parser
  5.6.x     | 3.6.x
  5.7.x     | 3.7.x
  5.8.x     | 3.8.x
- 5.9.x     | 3.9.x@dev
+ 6.x       | 4.x@dev
 
 ## Installation
 
@@ -68,7 +68,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
     "require": {
-        "orchestra/parser": "^3.5"
+        "orchestra/parser": "^4.0"
     }
 }
 ```
@@ -79,7 +79,7 @@ And then run `composer install` from the terminal.
 
 Above installation can also be simplify by using the following command:
 
-    composer require "orchestra/parser=^3.5"
+    composer require "orchestra/parser=^4.0"
 
 ## Configuration
 
