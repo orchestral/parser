@@ -22,12 +22,12 @@
     },
     "require": {
         "php": ">=7.2",
-        "illuminate/container": "^6.0",
+        "illuminate/container": "^7.0",
         "laravie/parser": "^2.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^4.0"
+        "orchestra/testbench": "^5.0"
     },
     "extra": {
         "branch-alias": {
