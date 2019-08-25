@@ -17,7 +17,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Orchestra\\Parser\\TestCase\\": "tests/"
+            "Orchestra\\Parser\\Tests\\": "tests/"
         }
     },
     "require": {

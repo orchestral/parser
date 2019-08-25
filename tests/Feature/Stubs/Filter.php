@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Parser\TestCase\Feature\Stubs;
+namespace Orchestra\Parser\Tests\Feature\Stubs;
 
 class Filter
 {

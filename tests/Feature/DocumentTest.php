@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Parser\TestCase\Feature;
+namespace Orchestra\Parser\Tests\Feature;
 
 use Orchestra\Parser\Xml\Facade as XmlParser;
 

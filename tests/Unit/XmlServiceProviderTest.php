@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Parser\TestCase\Unit;
+namespace Orchestra\Parser\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\XmlServiceProvider;
