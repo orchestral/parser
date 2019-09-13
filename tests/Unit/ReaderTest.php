@@ -2,10 +2,10 @@
 
 namespace Orchestra\Parser\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-use Orchestra\Parser\Xml\Reader;
-use Orchestra\Parser\Xml\Document;
 use Illuminate\Container\Container;
+use Orchestra\Parser\Xml\Document;
+use Orchestra\Parser\Xml\Reader;
+use PHPUnit\Framework\TestCase;
 
 class ReaderTest extends TestCase
 {

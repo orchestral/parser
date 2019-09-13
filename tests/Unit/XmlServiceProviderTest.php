@@ -2,8 +2,8 @@
 
 namespace Orchestra\Parser\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Orchestra\Parser\XmlServiceProvider;
+use PHPUnit\Framework\TestCase;
 
 class XmlServiceProviderTest extends TestCase
 {
