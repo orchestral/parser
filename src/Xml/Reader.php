@@ -2,8 +2,8 @@
 
 namespace Orchestra\Parser\Xml;
 
-use SimpleXMLElement;
 use Laravie\Parser\Xml\Reader as BaseReader;
+use SimpleXMLElement;
 
 class Reader extends BaseReader
 {

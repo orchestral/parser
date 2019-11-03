@@ -2,9 +2,9 @@
 
 namespace Orchestra\Parser\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-use Orchestra\Parser\Xml\Document;
 use Illuminate\Container\Container;
+use Orchestra\Parser\Xml\Document;
+use PHPUnit\Framework\TestCase;
 
 class DocumentTest extends TestCase
 {
