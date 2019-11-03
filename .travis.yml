@@ -4,6 +4,7 @@ dist: xenial
 php:
   - 7.2
   - 7.3
+  - 7.4snapshot
 
 env:
   global:
@@ -33,6 +34,6 @@ matrix:
     - php: 7.2
       env: setup=coveralls coverage=yes
   allow_failures:
-    - php: nightly
+    - php: 7.4snapshot
     - env: setup=coveralls coverage=yes
   fast_finish: true
