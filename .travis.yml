@@ -1,10 +1,10 @@
+dist: bionic
 language: php
-dist: xenial
 
 php:
   - 7.2
   - 7.3
-  - 7.4snapshot
+  - 7.4
 
 env:
   global:
@@ -14,9 +14,11 @@ env:
     - setup=lowest
     - setup=stable
 
-before_script:
+before_install:
   - travis_retry composer self-update
   - composer config discard-changes true
+
+before_script:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
   - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
   - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-lowest --prefer-stable; fi
@@ -24,7 +26,7 @@ before_script:
 
 script:
   - if [[ $coverage = 'yes' ]]; then vendor/bin/phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; fi
-  - if [[ $coverage = 'no' ]]; then vendor/bin/phpunit -c phpunit.xml --testdox --verbose; fi
+  - if [[ $coverage = 'no' ]]; then vendor/bin/phpunit -c phpunit.xml --verbose; fi
 
 after_script:
   - if [[ $setup = 'coveralls' ]]; then php vendor/bin/php-coveralls -v; fi
@@ -34,5 +36,6 @@ matrix:
     - php: 7.2
       env: setup=coveralls coverage=yes
   allow_failures:
+    - php: nightly
     - env: setup=coveralls coverage=yes
   fast_finish: true
