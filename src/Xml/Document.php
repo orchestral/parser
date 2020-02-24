@@ -16,8 +16,6 @@ class Document extends BaseDocument
 
     /**
      * Construct a new document.
-     *
-     * @param \Illuminate\Contracts\Container\Container  $app
      */
     public function __construct(Container $app)
     {
@@ -26,11 +24,6 @@ class Document extends BaseDocument
 
     /**
      * Make filter resolver.
-     *
-     * @param  string  $class
-     * @param  string  $method
-     *
-     * @return array
      */
     protected function makeFilterResolver(string $class, string $method): array
     {
@@ -40,7 +33,6 @@ class Document extends BaseDocument
     /**
      * Call filter to parse the value.
      *
-     * @param  callable  $resolver
      * @param  mixed  $value
      *
      * @return mixed
