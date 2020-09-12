@@ -22,15 +22,15 @@
     },
     "require": {
         "php": ">=7.3",
-        "illuminate/container": "^8.0",
+        "illuminate/container": "^9.0",
         "laravie/parser": "^2.1.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0"
+        "orchestra/testbench": "^7.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "6.0-dev"
+            "dev-master": "7.0-dev"
         },
         "laravel": {
             "providers": [
