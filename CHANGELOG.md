@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `orchestra/parser`.
 
+## 6.1.0
+
+Released: 2021-04-18
+
+### Changes
+
+* Added support for Laravel Octane.
+
 ## 6.0.0
 
 Released: 2020-09-12
