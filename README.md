@@ -3,7 +3,7 @@ XML Document Parser for Laravel and PHP
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
-[![Build Status](https://travis-ci.org/orchestral/parser.svg?branch=master)](https://travis-ci.org/orchestral/parser)
+[![tests](https://github.com/orchestral/parser/workflows/tests/badge.svg?branch=master)](https://github.com/orchestral/parser/actions?query=workflow%3Atests+branch%3Amaster)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/parser/version)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads)](https://packagist.org/packages/orchestra/parser)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/parser/v/unstable)](//packagist.org/packages/orchestra/parser)
@@ -43,13 +43,6 @@ $user = $xml->parse([
     'followers' => ['uses' => 'user::followers'],
 ]);
 ```
-
-## Table of Content
-
-* [Version Compatibility](#version-compatibility)
-* [Installation](#installation)
-* [Configuration](#configuration)
-* [Changelog](https://github.com/orchestral/parser/releases)
 
 ## Version Compatibility
 
