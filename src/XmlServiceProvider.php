@@ -17,7 +17,7 @@ class XmlServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
-        $this->app->singleton('orchestra.parser.xml', static function (Container $app) {
+        $this->app->bind('orchestra.parser.xml', static function (Container $app) {
             return new XmlReader(new XmlDocument($app));
         });
     }
