@@ -22,11 +22,11 @@
     },
     "require": {
         "php": "^7.3 || ^8.0",
-        "illuminate/container": "^8.0",
-        "laravie/parser": "^2.1.2"
+        "illuminate/container": "^8.75",
+        "laravie/parser": "^2.1.3"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.19"
+        "orchestra/testbench": "^6.24"
     },
     "extra": {
         "branch-alias": {
