@@ -24,6 +24,8 @@ class Document extends BaseDocument
 
     /**
      * Make filter resolver.
+     *
+     * @return {0: object, 1: string}
      */
     protected function makeFilterResolver(string $class, string $method): array
     {
