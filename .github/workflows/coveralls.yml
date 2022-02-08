@@ -15,7 +15,7 @@ jobs:
         php:
           - "7.3"
         dependencies:
-          - "locked"
+          - "highest"
         experimental:
           - false
 
