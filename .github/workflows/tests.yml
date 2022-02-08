@@ -19,7 +19,6 @@ jobs:
           - "8.0"
           - "8.1"
         dependencies:
-          - "locked"
           - "highest"
           - "lowest"
         experimental:
