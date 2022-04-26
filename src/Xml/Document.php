@@ -39,7 +39,7 @@ class Document extends BaseDocument
      *
      * @return mixed
      */
-    protected function callFilterResolver(callable $resolver, $value)
+    protected function callFilterResolver($resolver, $value)
     {
         return $this->app->call($resolver, ['value' => $value]);
     }
