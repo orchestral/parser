@@ -36,7 +36,6 @@ class Document extends BaseDocument
      * Call filter to parse the value.
      *
      * @param  mixed  $value
-     *
      * @return mixed
      */
     protected function callFilterResolver(callable $resolver, $value)

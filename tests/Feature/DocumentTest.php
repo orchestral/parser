@@ -89,7 +89,7 @@ class DocumentTest extends TestCase
     {
         return [
             [
-'<api>
+                '<api>
     <user followers="5">
         <id>1</id>
         <email type="primary">crynobone@gmail.com</email>
@@ -109,7 +109,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<foo>
+                '<foo>
     <bar hello="hello world">foobar</bar>
     <world></world>
 </foo>',
@@ -133,7 +133,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <collection>
         <user>
             <id>1</id>
@@ -162,7 +162,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <user>
         <id>1</id>
         <name>Mior Muhammad Zaki</name>
@@ -189,7 +189,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <user>
         <id>1</id>
         <name>Mior Muhammad Zaki</name>
@@ -216,7 +216,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <user>
         <property id="id">
             <value>1</value>
@@ -251,7 +251,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <user>
         <property id="id">1</property>
         <property id="name">Mior Muhammad Zaki</property>
@@ -278,7 +278,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api></api>',
+                '<api></api>',
                 [
                     'users' => ['uses' => 'user[id,name]', 'default' => null],
                 ],
@@ -287,7 +287,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api><user></user></api>',
+                '<api><user></user></api>',
                 [
                     'users' => ['uses' => 'user[id,name]', 'default' => null],
                 ],
@@ -296,7 +296,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<products>
+                '<products>
     <product ID="123456">
         <name>Lord of the Rings</name>
         <description>Just a book.</description>
@@ -355,7 +355,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<products>
+                '<products>
     <product ID="123456">
         <name>Lord of the Rings</name>
         <description>Just a book.</description>
@@ -410,7 +410,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<api>
+                '<api>
     <Country name="Albania" id="ALB">
         <Competition id="ALB_1" name="Albania 1" event_name="Super League" sport="soccer" levels_on_pyramid="0" competition_type="league" image="" timestamp="0"/>
     </Country>
@@ -437,7 +437,7 @@ class DocumentTest extends TestCase
                 ],
             ],
             [
-'<xml time="1460026675">
+                '<xml time="1460026675">
     <Country id="ALG" name="Algeria" image="Algeria.png" lastupdate="1315773004"/>
     <Country id="ASM" name="American Samoa" image="American-Samoa.png" lastupdate="1315773004"/>
     <Country id="AND" name="Andorra" image="Andorra.png" lastupdate="1315773004"/>
