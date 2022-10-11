@@ -22,12 +22,12 @@
     },
     "require": {
         "php": "^8.0",
-        "illuminate/container": "^9.0",
+        "illuminate/container": "^9.34",
         "laravie/parser": "^2.1.3"
     },
     "require-dev": {
         "laravel/pint": "^1.1",
-        "orchestra/testbench": "^7.0"
+        "orchestra/testbench": "^7.10.1"
     },
     "extra": {
         "branch-alias": {
@@ -38,6 +38,9 @@
                 "Orchestra\\Parser\\XmlServiceProvider"
             ]
         }
+    },    
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi"
     },
     "config": {
         "sort-packages": true
