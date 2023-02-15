@@ -29,7 +29,7 @@ class DocumentTest extends TestCase
         $this->assertEquals($expected, $data);
     }
 
-    public function dataCollectionProvider()
+    public static function dataCollectionProvider()
     {
         return [
             [
