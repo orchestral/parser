@@ -3,12 +3,12 @@ XML Document Parser for Laravel and PHP
 
 Parser Component is a framework agnostic package that provide a simple way to parse XML to array without having to write a complex logic.
 
-[![tests](https://github.com/orchestral/parser/workflows/tests/badge.svg?branch=master)](https://github.com/orchestral/parser/actions?query=workflow%3Atests+branch%3Amaster)
+[![tests](https://github.com/orchestral/parser/workflows/tests/badge.svg?branch=8.x)](https://github.com/orchestral/parser/actions?query=workflow%3Atests+branch%3A8.x)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/parser/version)](https://packagist.org/packages/orchestra/parser)
 [![Total Downloads](https://poser.pugx.org/orchestra/parser/downloads)](https://packagist.org/packages/orchestra/parser)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/parser/v/unstable)](//packagist.org/packages/orchestra/parser)
 [![License](https://poser.pugx.org/orchestra/parser/license)](https://packagist.org/packages/orchestra/parser)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/parser/badge.svg?branch=master)](https://coveralls.io/github/orchestral/parser?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/parser/badge.svg?branch=8.x)](https://coveralls.io/github/orchestral/parser?branch=8.x)
 
 Imagine if you can parse
 
@@ -48,14 +48,11 @@ $user = $xml->parse([
 
 Laravel    | Parser
 :----------|:----------
- 5.5.x     | 3.5.x
- 5.6.x     | 3.6.x
- 5.7.x     | 3.7.x
- 5.8.x     | 3.8.x
  6.x       | 4.x
  7.x       | 5.x
  8.x       | 6.x 
  9.x       | 7.x
+ 10.x      | 8.x
 
 ## Installation
 
