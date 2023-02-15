@@ -28,7 +28,8 @@
     "require-dev": {
         "laravel/pint": "^1.4",
         "orchestra/testbench": "^8.0",
-        "phpstan/phpstan": "^1.9.14"
+        "phpstan/phpstan": "^1.9.14",
+        "phpunit/phpunit": "^10.0.7"
     },
     "extra": {
         "branch-alias": {
