@@ -27,7 +27,8 @@
     },
     "require-dev": {
         "laravel/pint": "^1.1",
-        "orchestra/testbench": "^7.10.1"
+        "orchestra/testbench": "^7.10.1",
+        "phpstan/phpstan": "^1.9.14"
     },
     "extra": {
         "branch-alias": {
