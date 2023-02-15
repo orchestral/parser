@@ -24,6 +24,8 @@ class Document extends BaseDocument
 
     /**
      * Make filter resolver.
+     *
+     * @return array{0: object, 1: string}
      */
     protected function makeFilterResolver(string $class, string $method): array
     {
@@ -34,7 +36,6 @@ class Document extends BaseDocument
      * Call filter to parse the value.
      *
      * @param  mixed  $value
-     *
      * @return mixed
      */
     protected function callFilterResolver(callable $resolver, $value)

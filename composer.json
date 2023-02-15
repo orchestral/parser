@@ -23,10 +23,12 @@
     "require": {
         "php": "^8.0",
         "illuminate/container": "^10.0",
-        "laravie/parser": "^2.1.3"
+        "laravie/parser": "^2.3"
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0"
+        "laravel/pint": "^1.4",
+        "orchestra/testbench": "^8.0",
+        "phpstan/phpstan": "^1.9.14"
     },
     "extra": {
         "branch-alias": {
@@ -38,8 +40,12 @@
             ]
         }
     },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi"
+    },
     "config": {
         "sort-packages": true
     },
+    "prefer-stable": true,
     "minimum-stability": "dev"
 }

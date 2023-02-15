@@ -3,11 +3,11 @@
 namespace Orchestra\Parser\Xml;
 
 /**
- * @method \Laravie\Parser\Document extract(string $content)
- * @method \Laravie\Parser\Document load(string $filename)
- * @method \Laravie\Parser\Document local(string $filename)
- * @method \Laravie\Parser\Document remote(string $filename)
- * @method \Laravie\Parser\Document via(\SimpleXMLElement $xml)
+ * @method static \Laravie\Parser\Document extract(string $content)
+ * @method static \Laravie\Parser\Document load(string $filename)
+ * @method static \Laravie\Parser\Document local(string $filename)
+ * @method static \Laravie\Parser\Document remote(string $filename)
+ * @method static \Laravie\Parser\Document via(\SimpleXMLElement $xml)
  *
  * @see \Orchestra\Parser\Xml\Reader
  */
