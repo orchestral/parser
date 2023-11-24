@@ -3,6 +3,7 @@
 namespace Orchestra\Parser\Tests\Feature;
 
 use Orchestra\Parser\Xml\Facade as XmlParser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Workbench\App\Filter;
 
@@ -34,11 +35,8 @@ class DocumentTest extends TestCase
         $this->assertCount(0, $result);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider dataCollectionProvider
-     */
+    #[Test]
+    #[DataProvider('dataCollectionProvider')]
     public function it_can_parse($content, $schema, $expected)
     {
         $document = XmlParser::via(simplexml_load_string($content));
@@ -48,11 +46,7 @@ class DocumentTest extends TestCase
         $this->assertEquals($expected, $data);
     }
 
-    /**
-     * @test
-     *
-     * @requires PHP 7.0
-     */
+    #[Test]
     public function it_can_parse_with_tags()
     {
         $expected = [
