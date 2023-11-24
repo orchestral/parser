@@ -27,6 +27,7 @@ class Document extends BaseDocument
      *
      * @return array{0: object, 1: string}
      */
+    #[\Override]
     protected function makeFilterResolver(string $class, string $method): array
     {
         return [$this->app->make($class), $method];
@@ -38,6 +39,7 @@ class Document extends BaseDocument
      * @param  mixed  $value
      * @return mixed
      */
+    #[\Override]
     protected function callFilterResolver(callable $resolver, $value)
     {
         return $this->app->call($resolver, ['value' => $value]);
