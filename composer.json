@@ -1,7 +1,13 @@
 {
     "name": "orchestra/parser",
     "description": "XML Document Parser for Laravel and PHP",
-    "keywords": ["laravel", "orchestral", "orchestra-platform", "xml", "parser"],
+    "keywords": [
+        "laravel",
+        "orchestral",
+        "orchestra-platform",
+        "xml",
+        "parser"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +23,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Orchestra\\Parser\\Tests\\": "tests/"
+            "Orchestra\\Parser\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "require": {
@@ -42,7 +51,20 @@
         }
     },
     "scripts": {
-        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi"
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "lint": [
+            "@php vendor/bin/pint",
+            "@php vendor/bin/phpstan analyse"
+        ],
+        "test": [
+            "@php vendor/bin/phpunit"
+        ]
     },
     "config": {
         "sort-packages": true

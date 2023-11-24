@@ -3,10 +3,12 @@
 namespace Orchestra\Parser\Tests\Feature;
 
 use Orchestra\Parser\Xml\Facade as XmlParser;
+use PHPUnit\Framework\Attributes\Test;
+use Workbench\App\Filter;
 
 class DocumentTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_be_rebased()
     {
         $expected = '<foo><bar>foobar</bar></foo>';
@@ -16,7 +18,7 @@ class DocumentTest extends TestCase
         $this->assertEquals(simplexml_load_string($expected), $document->getContent());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_use_namespaed()
     {
         $document = XmlParser::via(simplexml_load_string(
@@ -114,11 +116,11 @@ class DocumentTest extends TestCase
     <world></world>
 </foo>',
                 [
-                    'foo' => ['uses' => 'bar', 'filter' => Stubs\Filter::class.'@filterStrToUpper'],
+                    'foo' => ['uses' => 'bar', 'filter' => Filter::class.'@filterStrToUpper'],
                     'hello' => ['uses' => ['bar::hello', 'bar'], 'filter' => '@notFilterable'],
                     'world' => ['uses' => 'world', 'default' => false],
                     'foobar' => ['uses' => 'bar::foobar', 'default' => false],
-                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => Stubs\Filter::class.'@filterStrToLower'],
+                    'username' => ['uses' => 'user::name', 'default' => 'Guest', 'filter' => Filter::class.'@filterStrToLower'],
                     'google' => 'google.com',
                     'facebook' => ['default' => 'facebook.com'],
                 ],

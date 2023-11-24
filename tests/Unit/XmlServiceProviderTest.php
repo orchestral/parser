@@ -3,11 +3,12 @@
 namespace Orchestra\Parser\Tests\Unit;
 
 use Orchestra\Parser\XmlServiceProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class XmlServiceProviderTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_deferred_the_service_registration()
     {
         $stub = new XmlServiceProvider(null);
@@ -15,7 +16,7 @@ class XmlServiceProviderTest extends TestCase
         $this->assertTrue($stub->isDeferred());
     }
 
-    /** @test */
+    #[Test]
     public function it_provides_expected_services()
     {
         $stub = new XmlServiceProvider(null);

@@ -4,14 +4,14 @@ namespace Orchestra\Parser\Tests\Unit;
 
 use Illuminate\Container\Container;
 use Orchestra\Parser\Xml\Document;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class DocumentTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider dataCollectionProvider
-     */
+    #[Test]
+    #[DataProvider('dataCollectionProvider')]
     public function it_can_parse_given_xml($content, $schema, $expected)
     {
         $stub = new class(new Container()) extends Document
