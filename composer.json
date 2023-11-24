@@ -24,9 +24,7 @@
     "autoload-dev": {
         "psr-4": {
             "Orchestra\\Parser\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+            "Workbench\\App\\": "workbench/app/"
         }
     },
     "require": {
