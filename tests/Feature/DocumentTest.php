@@ -36,6 +36,7 @@ class DocumentTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider dataCollectionProvider
      */
     public function it_can_parse($content, $schema, $expected)
@@ -49,6 +50,7 @@ class DocumentTest extends TestCase
 
     /**
      * @test
+     *
      * @requires PHP 7.0
      */
     public function it_can_parse_with_tags()
