@@ -29,8 +29,8 @@
     },
     "require": {
         "php": "^8.0",
-        "illuminate/container": "^10.0",
-        "laravie/parser": "^2.3"
+        "illuminate/container": "^10.0 || ^11.0",
+        "laravie/parser": "^2.4"
     },
     "require-dev": {
         "laravel/pint": "^1.4",
