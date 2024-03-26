@@ -28,15 +28,15 @@
         }
     },
     "require": {
-        "php": "^8.0",
-        "illuminate/container": "^10.0",
-        "laravie/parser": "^2.3"
+        "php": "^8.2",
+        "illuminate/container": "^11.0",
+        "laravie/parser": "^2.4"
     },
     "require-dev": {
-        "laravel/pint": "^1.4",
-        "orchestra/testbench": "^8.15",
-        "phpstan/phpstan": "^1.9.14",
-        "phpunit/phpunit": "^10.0.7"
+        "laravel/pint": "^1.6",
+        "orchestra/testbench": "^9.0.2",
+        "phpstan/phpstan": "^1.10.15",
+        "phpunit/phpunit": "^10.5"
     },
     "extra": {
         "branch-alias": {
