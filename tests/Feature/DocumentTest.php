@@ -20,7 +20,7 @@ class DocumentTest extends TestCase
     }
 
     #[Test]
-    public function it_can_use_namespaed()
+    public function it_can_use_namespaced()
     {
         $document = XmlParser::via(simplexml_load_string(
             '<?xml version="1.0" standalone="yes"?>
