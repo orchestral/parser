@@ -14,7 +14,7 @@ class DocumentTest extends TestCase
     #[DataProvider('dataCollectionProvider')]
     public function it_can_parse_given_xml($content, $schema, $expected)
     {
-        $stub = new class(new Container()) extends Document
+        $stub = new class(new Container) extends Document
         {
             public function filterStrToUpper($value)
             {

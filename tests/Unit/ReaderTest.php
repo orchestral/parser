@@ -15,7 +15,7 @@ class ReaderTest extends TestCase
     {
         $xml = '<xml><foo>foobar</foo></xml>';
 
-        $app = new Container();
+        $app = new Container;
         $document = new Document($app);
         $stub = new Reader($document);
         $output = $stub->extract($xml);
@@ -26,7 +26,7 @@ class ReaderTest extends TestCase
     #[Test]
     public function it_can_load_valid_xml_from_filesystem()
     {
-        $stub = new Reader(new Document(new Container()));
+        $stub = new Reader(new Document(new Container));
         $output = $stub->load(__DIR__.'/fixtures/foo.xml');
 
         $this->assertInstanceOf('\Orchestra\Parser\Xml\Document', $output);
@@ -39,7 +39,7 @@ class ReaderTest extends TestCase
 
         $xml = '<xml><foo>foobar<foo></xml>';
 
-        $stub = new Reader(new Document(new Container()));
+        $stub = new Reader(new Document(new Container));
         $output = $stub->extract($xml);
     }
 }

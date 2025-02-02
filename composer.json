@@ -35,7 +35,7 @@
     "require-dev": {
         "laravel/pint": "^1.6",
         "orchestra/testbench": "^9.0.2",
-        "phpstan/phpstan": "^1.10.15",
+        "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.5"
     },
     "extra": {
