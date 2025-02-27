@@ -54,6 +54,7 @@ Laravel    | Parser
  9.x       | 7.x
  10.x      | 8.x
  11.x      | 9.x
+ 12.x      | 10.x
 
 ## Installation
 
