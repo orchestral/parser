@@ -29,12 +29,12 @@
     },
     "require": {
         "php": "^8.2",
-        "illuminate/container": "^11.0",
+        "illuminate/container": "^12.0",
         "laravie/parser": "^2.4 || ^3.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.6",
-        "orchestra/testbench": "^9.0.2",
+        "laravel/pint": "^1.21",
+        "orchestra/testbench": "^10.0",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.5"
     },
