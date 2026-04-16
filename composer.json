@@ -1,10 +1,8 @@
 {
-    "name": "orchestra/parser",
+    "name": "godforhire/parser",
     "description": "XML Document Parser for Laravel and PHP",
     "keywords": [
         "laravel",
-        "orchestral",
-        "orchestra-platform",
         "xml",
         "parser"
     ],
@@ -18,12 +16,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Orchestra\\Parser\\": "src/"
+            "godforhire\\Parser\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Orchestra\\Parser\\Tests\\": "tests/",
+            "godforhire\\Parser\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -34,7 +32,7 @@
     },
     "require-dev": {
         "laravel/pint": "^1.21",
-        "orchestra/testbench": "^10.0",
+        "godforhire/testbench": "^10.0",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.5"
     },
@@ -44,7 +42,7 @@
         },
         "laravel": {
             "providers": [
-                "Orchestra\\Parser\\XmlServiceProvider"
+                "godforhire\\Parser\\XmlServiceProvider"
             ]
         }
     },
